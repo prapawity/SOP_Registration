@@ -23,9 +23,9 @@ Project of `Service-oriented Programming`
 # Tools
 <table>
 <tr>
-    <td colspan="2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/1280px-Spring_Framework_Logo_2018.svg.png"></td>
-    <td colspan="2"><img src="https://hackernoon.com/hn-images/1*_DOHv30w-0eI-Ysz5U47Yg.png"></td>
-    <td colspan="2"><img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-social.png"></td>
-    <td colspan="2"><img src="https://miro.medium.com/max/3938/0*pDPc20a9PsAPwDuS.png"></td>
+    <td colspan="3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/1280px-Spring_Framework_Logo_2018.svg.png"></td>
+    <td colspan="3"><img src="https://hackernoon.com/hn-images/1*_DOHv30w-0eI-Ysz5U47Yg.png"></td>
+    <td colspan="3"><img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-social.png"></td>
+    <td colspan="3"><img src="https://miro.medium.com/max/3938/0*pDPc20a9PsAPwDuS.png"></td>
 </tr>
 </table>
