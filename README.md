@@ -21,7 +21,7 @@ Project of `Service-oriented Programming`
 - Predict from data
 
 # Tools
-<table border=0>
+<table border="0">
 <tr >
     <td colspan="3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/1280px-Spring_Framework_Logo_2018.svg.png"></td>
     <td colspan="3"><img src="https://hackernoon.com/hn-images/1*_DOHv30w-0eI-Ysz5U47Yg.png"></td>
