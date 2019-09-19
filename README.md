@@ -1,7 +1,7 @@
 # SOP_Registration
 Project of `Service-oriented Programming`
     ระบบทะเบียน ที่นักศึกษาและอาจารย์ผู้สอนสามารถตรวจสอบและเข้าถึงข้อมูลต่างๆ เช่น ข้อมูลอัตราการเข้าชั้นเรียนของนศ. หรือ ข้อมูลตารางสอน ข้อมูลจำนวนนศ. โดยสามารถนำข้อมูลเหล่านี้มาแสดงผลเป็น chart และ สามารถคาดเดา behaviorได้
-<img src="./asset/IMG_0013.PNG" width="350px">
+<img src="./asset/IMG_0013.PNG">
 
 # Users
 - Administrator
