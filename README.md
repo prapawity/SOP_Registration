@@ -1,4 +1,7 @@
 # SOP_Registration
 Project of Service-oriented Programming
 
-Remark : sample request and response coming soon
+# Service Features
+## Data Visualization Service
+## Predicted Service
+## Providing Data Service
