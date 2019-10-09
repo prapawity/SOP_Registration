@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Router,Route,Link} from 'react-router'
 import { createBrowserHistory } from "history"
+import firstPage from './views/FirstPage'
+import Loaders from './component/loader';
 let browserHistory = createBrowserHistory()
 
 ReactDOM.render(
     <Router history={browserHistory}>
+        <Loaders/>
+        <Route path="/" component={firstPage}/>
         {/* <Route exact path="/" component={App}/>
         <Route path="/test2" component={Test}/>
         <Route path="/home" component={Navbar}/> */}
