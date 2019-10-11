@@ -3,12 +3,12 @@ import '../assets/FirstPage.css';
 import axios from 'axios';
 // template to use loader and axios
 function FirstPage() {
-    const [person, setPerson] = useState("")
+    const [person, setPerson] = useState({})
     useEffect(() => {
 
         axios.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(res => {
             const persons = res.data;
-            setPerson(persons.name)
+            setPerson(persons)
 
             // execute Loader
             var delayInMilliseconds = 2000; //2 second
