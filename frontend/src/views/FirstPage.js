@@ -27,7 +27,7 @@ function FirstPage() {
     return(
         
     <div className="test">
-        <h1>{person}</h1>
+        <h1>{person.name}</h1>
     </div>
     );
     

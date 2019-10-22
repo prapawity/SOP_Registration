@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "hongfah")
-public class HongFah implements Serializable {
+@Table(name = "teacher")
+public class Teacher {
+
     @Id
     public int id;
 
@@ -24,17 +24,18 @@ public class HongFah implements Serializable {
     @Column(name = "last_name")
     public String lastName;
 
-//    Constructor
-    public HongFah() {
-    }
+    // constructor
 
-    public HongFah(int id, @NotNull @Size(min = 2, max = 50) String firstName, @NotNull @Size(min = 2, max = 50) String lastName) {
+    public Teacher(int id, @NotNull @Size(min = 2, max = 50) String firstName, @NotNull @Size(min = 2, max = 50) String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    public Teacher(){
 
-    // getter setter
+    }
+
+    //getter setter
 
     public int getId() {
         return id;

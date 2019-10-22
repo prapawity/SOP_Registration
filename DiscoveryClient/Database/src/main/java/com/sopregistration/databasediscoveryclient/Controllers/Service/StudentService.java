@@ -15,16 +15,32 @@ public class StudentService {
     @Autowired
     public StudentRepository studentRepository;
 
-    public void createStudent(Student student){
-        studentRepository.save(student);
+    public boolean createStudent(Student student){
+        Student saved = studentRepository.save(student);
+        return saved != null ? true: false;
+        //case if want chk result
     }
 
     public Student getStudent(int id){
-        return studentRepository.getOne(id);
+        for (Student s: studentRepository.findAll()
+             ) {
+            if (id == s.getId()) return s;
+        }
+        return null;
     }
 
-    public List<Student> getAllStudent(){
-        return studentRepository.findAll();
+    public List<Student> getAllStudent(){ return studentRepository.findAll(); }
+
+    public Boolean deleteStudent(int id){
+        try {
+            studentRepository.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
 
 }

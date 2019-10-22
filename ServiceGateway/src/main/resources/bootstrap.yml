@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ServiceGateway
+  profiles:
+    active: default
+cloud:
+  config:
+    enabled: true

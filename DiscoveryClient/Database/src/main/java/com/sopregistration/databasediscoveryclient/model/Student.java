@@ -33,7 +33,6 @@ public class Student implements Serializable {
 
 //    Constructor
 
-
     public Student(int id,@NotNull @Size(min = 2, max = 50) String firstName, @NotNull @Size(min = 2, max = 50) String lastName, @NotNull @Size(min = 2, max = 50) String faculty, @NotNull Sex sex) {
         this.id = id;
         this.firstName = firstName;
