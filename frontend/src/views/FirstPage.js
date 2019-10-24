@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../assets/FirstPage.css';
 import axios from 'axios';
+import PrimarySearchAppBar from '../component/navbar';
 // template to use loader and axios
 function FirstPage() {
     const [person, setPerson] = useState({})
@@ -11,7 +12,7 @@ function FirstPage() {
             setPerson(persons)
 
             // execute Loader
-            var delayInMilliseconds = 2000; //2 second
+            var delayInMilliseconds = 3000; //3 second
             setTimeout(function() {
             //your code to be executed after 2 second
                 var eggs = document.getElementsByClassName('loader');
@@ -27,7 +28,7 @@ function FirstPage() {
     return(
         
     <div className="test">
-        <h1>{person.name}</h1>
+        <PrimarySearchAppBar/>
     </div>
     );
     
