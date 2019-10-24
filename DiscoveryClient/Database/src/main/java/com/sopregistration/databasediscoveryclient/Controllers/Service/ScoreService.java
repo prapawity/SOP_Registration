@@ -13,11 +13,49 @@ public class ScoreService {
     @Autowired
     public ScoreRepository scoreRepository;
 
-    public void createScore(Score score){
-        scoreRepository.save(score);
+    // define variables
+
+    public Boolean createScore(Score score){
+        Score score1 = scoreRepository.save(score);
+        return score1 != null ? true : false;
     }
+
+    //create Score
+
+    public Score getScoreID(int id){
+        for (Score s: scoreRepository.findAll()
+             ) {
+            if(s.getId() == id) return s;
+        }
+        return null;
+    }
+
+    // get ScoreByID
 
     public List<Score> getAllScore(){
         return scoreRepository.findAll();
     }
+
+    // get AllScore
+
+    public Boolean deleteScore(int id){
+        for (Score s: scoreRepository.findAll()
+        ) {
+            if(s.getId() == id) {
+                try {
+                    scoreRepository.delete(s);
+                    return true;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return false;
+                }
+
+            }
+        }
+        return false;
+
+    }
+
+    // delete Score
 }

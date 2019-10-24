@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -26,6 +27,8 @@ public class DatabasediscoveryclientApplication {
     DemographicService demographicService;
     @Autowired
     SubjectService subjectService;
+    @Autowired
+    SectionService sectionService;
 
     public static void main(String[] args) {
         SpringApplication.run(DatabasediscoveryclientApplication.class, args);
@@ -39,20 +42,17 @@ public class DatabasediscoveryclientApplication {
     @RequestMapping(value = "user/student/add", method = RequestMethod.POST)
     List<Student> addStudent(@RequestBody List<Student> student){
         Boolean chk;
-        List<Student> list = student;
-        list.clear();
+        List<Student> list = new ArrayList<Student>();
         for (Student i:student
              ) {
-            System.out.print(i);
             chk = studentService.createStudent(i);
             if(chk == false){
-                System.out.print("false");
-                return list;
+                continue;
             }else {
                 list.add(studentService.getStudent(i.getId()));
             }
         }
-        return studentService.getAllStudent();
+        return list;
     }
 
     @RequestMapping(value = "user/student/update/{id}", method = RequestMethod.POST)
@@ -80,15 +80,35 @@ public class DatabasediscoveryclientApplication {
 
 
     @RequestMapping(value = "score/add", method = RequestMethod.POST)
-    Score addScore(@RequestBody Score score){
-        scoreService.createScore(score);
-        return score;
+    List<Score> addScore(@RequestBody  List<Score> scoreList){
+        List<Score> newscore = new ArrayList<Score>();
+        newscore.clear();
+        boolean chk;
+        for (Score s: scoreList
+             ) {
+            chk = scoreService.createScore(s);
+            if(chk == false) return newscore;
+            else {
+                newscore.add(scoreService.getScoreID(s.getId()));
+            }
+
+        }
+        return newscore;
     }
 
     @RequestMapping(value = "score", method = RequestMethod.GET)
     List<Score> getAllScore(){
         return scoreService.getAllScore();
     }
+
+    @RequestMapping(value = "score/update/{id}", method = RequestMethod.POST)
+    Score updateScore(@RequestBody Score score,@PathVariable int id){ return scoreService.createScore(score) != false ? scoreService.getScoreID(id) : null; }
+
+    @RequestMapping(value = "score/{id}", method = RequestMethod.GET)
+    Score getScoreByID(@PathVariable int id){ return scoreService.getScoreID(id); }
+
+    @RequestMapping(value = "score/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteScoreID(@PathVariable int id){ return scoreService.deleteScore(id); }
 
 
 
@@ -104,11 +124,18 @@ public class DatabasediscoveryclientApplication {
 
     @RequestMapping(value = "user/hongfah/add", method = RequestMethod.POST)
     List<HongFah> addStaffHongFah(@RequestBody List<HongFah> hongFah){
-        for (HongFah h:hongFah
-             ) {
-            hongFahService.createHongfah(h);
+        List<HongFah> newList = new ArrayList<HongFah>();
+        boolean chk;
+        for (HongFah h: hongFah
+        ) {
+            chk = hongFahService.createHongfah(h);
+            if(chk == false) return newList;
+            else {
+                newList.add(hongFahService.getHongfah(h.getId()));
+            }
+
         }
-        return hongFah;
+        return newList;
     }
 
     @RequestMapping(value = "user/hongfah", method = RequestMethod.GET)
@@ -139,16 +166,17 @@ public class DatabasediscoveryclientApplication {
     @RequestMapping(value = "user/teacher/add", method = RequestMethod.POST)
     List<Teacher> addTeacher(@RequestBody List<Teacher> teachers){
         Boolean chk;
+        List<Teacher> list = new ArrayList<Teacher>();
+        list.clear();
         for (Teacher i: teachers
         ) {
             chk = teacherService.createTeacher(i);
-            if(chk == false){
-                List<Teacher> list = teachers;
-                list.clear();
-                return list;
+            if(chk == false){ return list;}
+            else{
+                list.add(teacherService.getTeacher(i.getId()));
             }
         }
-        return teacherService.getAllTeacher();
+        return list;
     }
 
     @RequestMapping(value = "user/teacher/update/{id}", method = RequestMethod.POST)
@@ -174,6 +202,25 @@ public class DatabasediscoveryclientApplication {
 
     ////////////////////////////////////////////       Demographic        ///////////////////////////////////////////
 
+    @RequestMapping(value = "demographic/add", method = RequestMethod.POST)
+    Demographic addDemo(@RequestBody Demographic demographic){
+        Demographic demographic1 = new Demographic();
+        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(demographic.getId()) : demographic1;
+    }
+    @RequestMapping(value = "demographic/update/{id}", method = RequestMethod.POST)
+    Demographic updateDemo(@RequestBody Demographic demographic, @PathVariable String id){
+        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(id) : null;
+    }
+
+    @RequestMapping(value = "demographic", method = RequestMethod.GET)
+    List<Demographic> getAllDemo(){ return demographicService.getAllDemographic(); }
+
+    @RequestMapping(value = "demographic/{id}", method = RequestMethod.GET)
+    Demographic getDemoID(@PathVariable String id){ return demographicService.getDemoID(id); }
+
+    @RequestMapping(value = "demographic/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteDemoID(@PathVariable String id){ return demographicService.deleteDemographic(id); }
+
 
 
     ////////////////////////////////////////////    End - Demographic    ////////////////////////////////////////////
@@ -183,26 +230,70 @@ public class DatabasediscoveryclientApplication {
 
 
     ////////////////////////////////////////////       Subject        ///////////////////////////////////////////
+
     @RequestMapping(value = "subject/add", method = RequestMethod.POST)
     Subject addSubject(@RequestBody Subject subject){
         Subject newSub = new Subject();
         return subjectService.createSubject(subject) == true ? subjectService.getSubjectID(subject.getId()): newSub;
     }
 
+    // this service is important, why can't add by array
+
+    @RequestMapping(value = "subject/update/{id}", method = RequestMethod.POST)
+    Subject updateSubject(@RequestBody Subject subject,@PathVariable int id){ return subjectService.createSubject(subject) != false ? subjectService.getSubjectID(id) : null; }
+
     @RequestMapping(value = "subject", method = RequestMethod.GET)
-    List<Subject> getAllSubject(){return subjectService.getAllSubject();
+    List<Subject> getSubjectAll(){
+        return subjectService.getAllSubject();
     }
 
-    @RequestMapping(value = "subject/update/id", method = RequestMethod.GET)
-    Subject updateSubject(@RequestBody Subject subject){
-        Subject c = new Subject();
-        return subjectService.createSubject(subject) == true ? subjectService.getSubjectID(subject.getId()) : c;
-    }
+    @RequestMapping(value = "subject/{id}", method = RequestMethod.GET)
+    Subject getSubjectByID(@PathVariable int id){ return subjectService.getSubjectID(id); }
+
+    @RequestMapping(value = "subject/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSubjectID(@PathVariable int id){ return subjectService.deleteSubject(id); }
 
 
 
     ////////////////////////////////////////////    End - Subject    ////////////////////////////////////////////
 
+
+    ////////////////////////////////////////////       Section        ///////////////////////////////////////////
+
+    @RequestMapping(value = "section/add", method = RequestMethod.POST)
+    List<Section> addSection(@RequestBody List<Section> sections){
+        Boolean chk;
+        List<Section> list = new ArrayList<Section>();
+        list.clear();
+        for (Section i: sections
+        ) {
+            chk = sectionService.createSection(i);
+            if(chk == false){ return list;}
+            else{
+                list.add(sectionService.getSectionByID(i.getId()));
+            }
+        }
+        return list;
+    }
+
+    @RequestMapping(value = "section/update/{id}", method = RequestMethod.POST)
+    Section updateSection(@RequestBody Section section,@PathVariable String id){ return sectionService.createSection(section) != false ? sectionService.getSectionByID(id) : null; }
+
+
+    @RequestMapping(value = "Section", method = RequestMethod.GET)
+    List<Section> getSectionAll(){
+        return sectionService.getAllSection();
+    }
+
+    @RequestMapping(value = "section/{id}", method = RequestMethod.GET)
+    Section getSubjectByID(@PathVariable String id){ return sectionService.getSectionByID(id); }
+
+    @RequestMapping(value = "section/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSectionID(@PathVariable String id){ return sectionService.deleteSection(id); }
+
+
+
+    ////////////////////////////////////////////    End - Section    ////////////////////////////////////////////
 
 
 }

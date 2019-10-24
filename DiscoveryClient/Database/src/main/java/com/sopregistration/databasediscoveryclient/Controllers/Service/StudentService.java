@@ -15,11 +15,15 @@ public class StudentService {
     @Autowired
     public StudentRepository studentRepository;
 
+    // Define variable
+
     public boolean createStudent(Student student){
         Student saved = studentRepository.save(student);
-        return saved != null ? true: false;
+        return saved != null ? true : false;
         //case if want chk result
     }
+
+    //create student
 
     public Student getStudent(int id){
         for (Student s: studentRepository.findAll()
@@ -29,18 +33,34 @@ public class StudentService {
         return null;
     }
 
+    // get student
+
     public List<Student> getAllStudent(){ return studentRepository.findAll(); }
+
+    // getAll
 
     public Boolean deleteStudent(int id){
         try {
-            studentRepository.deleteById(id);
-            return true;
-
+            for (Student s: studentRepository.findAll()
+                 ) {
+                if(s.getId() == id) {
+                    try {
+                        studentRepository.delete(s);
+                        return true;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return false;
+                    }
+                }
+            }
+            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
+
+    // delete
 
 
 }

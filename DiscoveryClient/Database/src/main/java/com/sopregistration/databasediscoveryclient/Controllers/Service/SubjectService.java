@@ -38,10 +38,21 @@ public class SubjectService {
 
     public List<Subject> getAllSubject(){ return subjectRepository.findAll(); }
 
-    public Boolean deleteSubject(Subject subject){
+    public Boolean deleteSubject(int id){
         try {
-            subjectRepository.delete(subject);
-            return true;
+            for (Subject s:subjectRepository.findAll()
+                 ) {
+                if(s.getId() == id){
+                    try {
+                        subjectRepository.delete(s);
+                        return true;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return false;
+                }
+            }
+            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;

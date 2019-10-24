@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SectionCheck extends JpaRepository<SectionCheckStudent, Integer> {
+public interface SectionCheckRepository extends JpaRepository<SectionCheckStudent, Integer> {
 }

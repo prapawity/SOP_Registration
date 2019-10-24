@@ -30,9 +30,20 @@ public class TeacherService {
 
     public Boolean deleteTeacher(int id){
         try {
-            repository.deleteById(id);
-            return true;
+            for (Teacher t: repository.findAll()
+                 ) {
+                if(t.getId() == id) {
+                    try {
+                        repository.delete(t);
+                        return true;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return false;
+                    }
 
+                }
+            }
+            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;

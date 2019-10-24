@@ -14,3 +14,4 @@ zuul:
     service-gateway:
       serviceId: database
     database: /database/**
+    servicecrud: /servicecrud/**

@@ -12,11 +12,9 @@ public class SectionCheckStudent implements Serializable {
     public int id;
 
     @OneToOne
-    @Column(name = "section")
     Section section;
 
     @OneToOne
-    @Column(name = "student")
     Student student;
 
     @Column(name = "points")

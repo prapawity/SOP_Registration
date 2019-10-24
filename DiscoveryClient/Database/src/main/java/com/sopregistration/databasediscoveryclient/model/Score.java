@@ -1,10 +1,9 @@
 package com.sopregistration.databasediscoveryclient.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
+
 
 @Entity
 @Table(name = "score")
@@ -20,7 +19,7 @@ public class Score implements Serializable {
     public Subject subject;
 
     @Column(name = "point")
-    public List<Double> point;
+    public Double point;
 
 
 //    Constructor
@@ -28,7 +27,7 @@ public class Score implements Serializable {
 
     }
 
-    public Score(Student student, Subject subject, List<Double> point) {
+    public Score(Student student, Subject subject, Double point) {
         this.student = student;
         this.subject = subject;
         this.point = point;
@@ -60,11 +59,11 @@ public class Score implements Serializable {
         this.subject = subject;
     }
 
-    public List<Double> getPoint() {
+    public Double getPoint() {
         return point;
     }
 
-    public void setPoint(List<Double> point) {
+    public void setPoint(Double point) {
         this.point = point;
     }
 }
