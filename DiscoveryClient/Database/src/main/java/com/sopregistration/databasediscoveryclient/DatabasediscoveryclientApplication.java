@@ -1,19 +1,14 @@
 package com.sopregistration.databasediscoveryclient;
 
-import com.sopregistration.databasediscoveryclient.Controllers.Service.HongFahService;
-import com.sopregistration.databasediscoveryclient.Controllers.Service.ScoreService;
-import com.sopregistration.databasediscoveryclient.Controllers.Service.StudentService;
-import com.sopregistration.databasediscoveryclient.Controllers.Service.TeacherService;
-import com.sopregistration.databasediscoveryclient.model.HongFah;
-import com.sopregistration.databasediscoveryclient.model.Score;
-import com.sopregistration.databasediscoveryclient.model.Student;
-import com.sopregistration.databasediscoveryclient.model.Teacher;
+import com.sopregistration.databasediscoveryclient.Controllers.Service.*;
+import com.sopregistration.databasediscoveryclient.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.ListIterator;
 
 @SpringBootApplication
 @RestController
@@ -27,6 +22,10 @@ public class DatabasediscoveryclientApplication {
     HongFahService hongFahService;
     @Autowired
     TeacherService teacherService;
+    @Autowired
+    DemographicService demographicService;
+    @Autowired
+    SubjectService subjectService;
 
     public static void main(String[] args) {
         SpringApplication.run(DatabasediscoveryclientApplication.class, args);
@@ -40,13 +39,17 @@ public class DatabasediscoveryclientApplication {
     @RequestMapping(value = "user/student/add", method = RequestMethod.POST)
     List<Student> addStudent(@RequestBody List<Student> student){
         Boolean chk;
+        List<Student> list = student;
+        list.clear();
         for (Student i:student
              ) {
+            System.out.print(i);
             chk = studentService.createStudent(i);
             if(chk == false){
-                List<Student> list = student;
-                list.clear();
+                System.out.print("false");
                 return list;
+            }else {
+                list.add(studentService.getStudent(i.getId()));
             }
         }
         return studentService.getAllStudent();
@@ -64,7 +67,7 @@ public class DatabasediscoveryclientApplication {
     Student getStudentByID(@PathVariable int id){ return studentService.getStudent(id); }
 
     @RequestMapping(value = "user/student/delete/{id}", method = RequestMethod.GET)
-    String deleteStudentID(@PathVariable int id){ return studentService.deleteStudent(id) ? "Delete Success":"Delete Failed"; }
+    Boolean deleteStudentID(@PathVariable int id){ return studentService.deleteStudent(id); }
 
 
 
@@ -122,7 +125,7 @@ public class DatabasediscoveryclientApplication {
     HongFah updateHongfah(@RequestBody HongFah hongFah,@PathVariable int id){ return hongFahService.createHongfah(hongFah) != false ? hongFahService.getHongfah(id) : null; }
 
     @RequestMapping(value = "user/hongfah/delete/{id}", method = RequestMethod.GET)
-    String deleteHongfahID(@PathVariable int id){ return hongFahService.deleteHongfah(id) ? "Delete Success":"Delete Failed"; }
+    Boolean deleteHongfahID(@PathVariable int id){ return hongFahService.deleteHongfah(id); }
 
 
 
@@ -160,10 +163,45 @@ public class DatabasediscoveryclientApplication {
     Teacher getTeacherByID(@PathVariable int id){ return teacherService.getTeacher(id); }
 
     @RequestMapping(value = "user/teacher/delete/{id}", method = RequestMethod.GET)
-    String deleteTeacherID(@PathVariable int id){ return teacherService.deleteTeacher(id) ? "Delete Success":"Delete Failed"; }
+    Boolean deleteTeacherID(@PathVariable int id){ return teacherService.deleteTeacher(id); }
 
 
     ////////////////////////////////////////////    End - Teacher    ////////////////////////////////////////////
+
+
+
+
+
+    ////////////////////////////////////////////       Demographic        ///////////////////////////////////////////
+
+
+
+    ////////////////////////////////////////////    End - Demographic    ////////////////////////////////////////////
+
+
+
+
+
+    ////////////////////////////////////////////       Subject        ///////////////////////////////////////////
+    @RequestMapping(value = "subject/add", method = RequestMethod.POST)
+    Subject addSubject(@RequestBody Subject subject){
+        Subject newSub = new Subject();
+        return subjectService.createSubject(subject) == true ? subjectService.getSubjectID(subject.getId()): newSub;
+    }
+
+    @RequestMapping(value = "subject", method = RequestMethod.GET)
+    List<Subject> getAllSubject(){return subjectService.getAllSubject();
+    }
+
+    @RequestMapping(value = "subject/update/id", method = RequestMethod.GET)
+    Subject updateSubject(@RequestBody Subject subject){
+        Subject c = new Subject();
+        return subjectService.createSubject(subject) == true ? subjectService.getSubjectID(subject.getId()) : c;
+    }
+
+
+
+    ////////////////////////////////////////////    End - Subject    ////////////////////////////////////////////
 
 
 
