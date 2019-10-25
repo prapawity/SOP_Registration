@@ -1,19 +1,34 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.ScoreRepository;
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionCheckRepository;
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionRepository;
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.StudentRepository;
+import com.sopregistration.databasediscoveryclient.model.Score;
+import com.sopregistration.databasediscoveryclient.model.Section;
+import com.sopregistration.databasediscoveryclient.model.SectionCheckStudent;
 import com.sopregistration.databasediscoveryclient.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import static com.sopregistration.databasediscoveryclient.model.Sex.Men;
 
 @Service
 public class StudentService {
 
     @Autowired
-    public StudentRepository studentRepository;
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private ScoreRepository scoreRepository;
+
+    @Autowired
+    private SectionRepository sectionRepository;
+
+    @Autowired
+    private SectionCheckRepository sectionCheckRepository;
+
 
     // Define variable
 
@@ -41,19 +56,42 @@ public class StudentService {
 
     public Boolean deleteStudent(int id){
         try {
-            for (Student s: studentRepository.findAll()
+            for (Score s: scoreRepository.findAll()
                  ) {
-                if(s.getId() == id) {
-                    try {
-                        studentRepository.delete(s);
-                        return true;
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        return false;
-                    }
+                if(s.getStudent().getId() == id){
+                    scoreRepository.delete(s);
                 }
             }
-            return false;
+            for (Section s: sectionRepository.findAll()
+                 ) {
+                List<Student> list = new ArrayList<Student>();
+                for (Student st: s.getStudentList()
+                     ) {
+                    if(st.getId() != id){
+                        list.add(st);
+                    }
+                }
+                s.setStudentList(list);
+                sectionRepository.save(s);
+            }
+            for (SectionCheckStudent chk:sectionCheckRepository.findAll()){
+                List<Student> list = new ArrayList<Student>();
+                for (Student s:chk.getStudent()
+                     ) {
+                    if(s.getId() != id){
+                        list.add(s);
+                    }
+                }
+                chk.setStudent(list);
+                sectionCheckRepository.save(chk);
+            }
+            try {
+                studentRepository.deleteById(id);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;

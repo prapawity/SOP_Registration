@@ -2,6 +2,7 @@ package com.sopregistration.databasediscoveryclient.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "secchk")
@@ -11,11 +12,11 @@ public class SectionCheckStudent implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
-    @OneToOne
+    @ManyToOne
     Section section;
 
-    @OneToOne
-    Student student;
+    @ManyToMany
+    List<Student> studentList;
 
     @Column(name = "points")
     Boolean check;
@@ -25,12 +26,11 @@ public class SectionCheckStudent implements Serializable {
 
     }
 
-    public SectionCheckStudent(Section section, Student student, Boolean check) {
+    public SectionCheckStudent(Section section, List<Student> student, Boolean check) {
         this.section = section;
-        this.student = student;
+        this.studentList = student;
         this.check = check;
     }
-
     //getter setter
 
     public int getId() {
@@ -49,12 +49,12 @@ public class SectionCheckStudent implements Serializable {
         this.section = section;
     }
 
-    public Student getStudent() {
-        return student;
+    public List<Student> getStudent() {
+        return studentList;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent(List<Student> studentList) {
+        this.studentList = studentList;
     }
 
     public Boolean getCheck() {
