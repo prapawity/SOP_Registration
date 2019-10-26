@@ -56,6 +56,7 @@ public class StudentService {
 
     public Boolean deleteStudent(int id){
         try {
+            List<Student> list = new ArrayList<Student>();
             for (Score s: scoreRepository.findAll()
                  ) {
                 if(s.getStudent().getId() == id){
@@ -64,7 +65,8 @@ public class StudentService {
             }
             for (Section s: sectionRepository.findAll()
                  ) {
-                List<Student> list = new ArrayList<Student>();
+                list.clear();
+
                 for (Student st: s.getStudentList()
                      ) {
                     if(st.getId() != id){
@@ -75,7 +77,7 @@ public class StudentService {
                 sectionRepository.save(s);
             }
             for (SectionCheckStudent chk:sectionCheckRepository.findAll()){
-                List<Student> list = new ArrayList<Student>();
+                list.clear();
                 for (Student s:chk.getStudent()
                      ) {
                     if(s.getId() != id){

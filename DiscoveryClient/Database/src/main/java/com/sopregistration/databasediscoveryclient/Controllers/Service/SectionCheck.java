@@ -1,6 +1,8 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionCheckRepository;
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionRepository;
+import com.sopregistration.databasediscoveryclient.model.Section;
 import com.sopregistration.databasediscoveryclient.model.SectionCheckStudent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,9 @@ import java.util.List;
 public class SectionCheck {
     @Autowired
     SectionCheckRepository sectionCheckRepository;
+
+    @Autowired
+    SectionRepository sectionRepository;
 
     // define variables
 
@@ -36,19 +41,14 @@ public class SectionCheck {
     // getAll SectionCheck
 
     public Boolean DeleteSectionCheck(int id){
-        for (SectionCheckStudent s: sectionCheckRepository.findAll()
-        ) {
-            if(s.getId() == id) {
-                try {
-                    sectionCheckRepository.delete(s);
-                    return true;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return false;
-                }
+            try {
+                sectionCheckRepository.deleteById(id);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
             }
-        }
-        return false;
+
     }
 
     // delete SectionCheck
