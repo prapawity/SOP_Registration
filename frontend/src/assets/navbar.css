@@ -9,3 +9,84 @@
 .MuiPaper-root{
     /* background-color: white !important; */
 }
+.detail-title{
+    margin-left: 10px ;
+    margin-right: 10px ;
+}
+.title{
+    color: #0099FF;
+    /* margin: auto; */
+    font-size-adjust: initial;
+  }
+.MuiGrid-spacing-xs-2{
+    margin: auto !important;
+}
+
+.MuiGrid-justify-xs-center, .MuiGrid-justify-xs-flex-end{
+    padding: inherit;
+}
+
+.MuiAppBar-colorPrimary{
+    color: black !important;
+    background-color: white !important;
+}
+
+.MuiPaper-elevation4, .MuiPaper-elevation1{
+    box-shadow: none !important;
+}
+.MuiFab-primary{
+    background-color: #0099FF !important;
+}
+.burger{
+    display: none;
+    margin: auto;
+}
+.notburger{
+    display: flex;
+}
+#getstart{
+    font-size: x-small;
+  }
+IconButton{
+    background-color: red !important;
+  }
+@media (max-width: 575.98px) { 
+    .burger{
+        display: flex !important;
+    }
+    .notburger{
+        display: none !important;
+    }
+    .MuiGrid-justify-xs-flex-end{
+        padding: 10px !important;
+    }
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .burger{
+        display: flex !important;
+    }
+    .notburger{
+        display: none !important;
+    }
+    .MuiGrid-justify-xs-flex-end{
+        padding: 10px !important;
+    }
+
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+ }
