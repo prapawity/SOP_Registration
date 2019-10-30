@@ -11,8 +11,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Footer from '../component/footer'
-// template to use loader and axios
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
 
+
+// import
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
@@ -56,6 +59,7 @@ function FirstPage() {
     const [person, setPerson] = useState({})
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+
 
 
     useEffect(() => {
@@ -106,7 +110,14 @@ function FirstPage() {
                         </Card>
                     </Grid>
                     <Grid container justify="center" item xs={12} md={8} >
-                        <img className="img_tab" src={require('../assets/images/itkmitl.jpg')} />
+                        {/* <img className="img_tab" src={require('../assets/images/itkmitl.jpg')} /> */}
+                        <Slider autoplay={1500}>
+                            <div key={0} style={{ background: `url(${require('../assets/images/test2.jpg')}) no-repeat center center` }}></div>
+                            <div key={1} style={{ background: `url(${require('../assets/images/test.jpg')}) no-repeat center center` }}></div>
+                            <div key={2} style={{ background: `url(${require('../assets/images/test2.jpg')}) no-repeat center center` }}></div>
+                            <div key={3} style={{ background: `url(${require('../assets/images/itkmitl.jpg')}) no-repeat center center` }}></div>
+                            <div key={4} style={{ background: `url(${require('../assets/images/test2.jpg')}) no-repeat center center` }}></div>
+                        </Slider>
                     </Grid>
                 </Grid>
             </Grid>
