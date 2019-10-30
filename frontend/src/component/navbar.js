@@ -3,15 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import '../assets/navbar.css'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
-import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -21,6 +18,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,6 +33,12 @@ const useStyles = makeStyles(theme => ({
   },
   margin: {
     margin: theme.spacing(1),
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
   },
 }));
 
@@ -137,24 +141,19 @@ export default function PrimarySearchAppBar() {
               <Grid item xs={8}>
                 <Grid className="notburger" container justify="center" spacing={0}>
                   <div className="detail-title">
-                    <h4>
-                      Home
-                    </h4>
+                    <Button className={classes.button}>Home</Button>
                   </div>
                   <div className="detail-title">
-                    <h4>
-                      Class
-                    </h4>
+
+                    <Button className={classes.button}>Class</Button>
                   </div>
                   <div className="detail-title">
-                    <h4>
-                      Precision
-                    </h4>
+
+                    <Button className={classes.button}>Precision</Button>
                   </div>
                   <div className="detail-title">
-                    <h4>
-                      Contact
-                    </h4>
+                   
+                    <Button className={classes.button}>Contact</Button>
                   </div>
                 </Grid>
               </Grid>

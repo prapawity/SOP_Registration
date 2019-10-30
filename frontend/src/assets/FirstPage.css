@@ -4,7 +4,105 @@
   padding-right: 5%;
   max-width: 100%;
   }
-.MuiPaper-elevation1{
 
-  /* box-shadow: none !important; */
+.img_tab{
+  max-width: 100%;
+  width: auto;
+  min-width: 320px;
+  box-shadow: 10px 10px 5px grey;
+  border-radius: 10px;
+}
+.img_right{
+  max-width: 90%;
+  max-height: 100%;
+  min-width: 330px;
+  box-shadow: 10px 10px 5px grey;
+  right: 0;
+}
+.img_2{
+  width: 80%;
+}
+.card_text{
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12) !important;
+}
+
+.widths{
+  width: 100% !important;
+}
+
+.centerg{
+  /* background-color: blue; */
+  padding-top: 10% !important;
+}
+.centerz{
+  /* background-color: blue; */
+  padding-top: 15% !important;
+}
+.centern{
+  /* background-color: blue; */
+  padding-top: 10% !important;
+  position: relative;
+}
+.makeStyles-trybtn-10{
+  /* background-color: #0099FF !important; */
+  color: #0099FF !important;
+  border: 1px solid #0099FF !important;
+}
+.secondcards{
+  right: 0;
+}
+.centerg-ink{
+  /* background-color: blue; */
+  padding-top: 15% !important;
+  padding-right: 0 !important;
+}
+.ink{
+  padding-right: 0 !important;
+}
+#root > div.makeStyles-root-1 > div.MuiGrid-root.ink.MuiGrid-container.MuiGrid-spacing-xs-3 > div{
+  padding-right: 0 !important;
+}
+.makeStyles-last_component-11{
+  text-align: center;
+  width: 70%;
+}
+@media (max-width: 575.98px) { 
+  .img_tab{
+    width: 100vw !important;
+    border-radius: 0%;
+    height: auto;
+    box-shadow: none;
+    position: flex !important;
+  }
+  .img_right{
+    box-shadow: none;
+    position: flex;
+  }
+  .makeStyles-last_component-11{
+    width: 100%;
+  }
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .makeStyles-last_component-11{
+    width: 100%;
+  }
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
 }

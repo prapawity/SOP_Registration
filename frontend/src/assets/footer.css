@@ -1,0 +1,13 @@
+.footer{
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin-top: 15%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#root > div.makeStyles-root-1 > div.footer > p > a{
+    color: rgba(0, 0, 0, 0.54) !important;
+}
