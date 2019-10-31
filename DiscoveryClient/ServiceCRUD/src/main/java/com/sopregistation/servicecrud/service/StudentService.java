@@ -5,12 +5,9 @@ import com.sopregistation.servicecrud.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -23,6 +20,14 @@ public class StudentService {
         List<ServiceInstance> instances = discoveryClient.getInstances("database");
         String serviceUri = String.format("%s/user/student/add" ,instances.get(0).getUri().toString());
         StudentList restExchange = restTemplate.postForObject( serviceUri, student, StudentList.class);
+        return restExchange;
+    }
+
+    public Student updateStudent(Student student,int id){
+        RestTemplate restTemplate = new RestTemplate();
+        List<ServiceInstance> instances = discoveryClient.getInstances("database");
+        String serviceUri = String.format("%s/user/hongfah/update/%s" ,instances.get(0).getUri().toString());
+        Student restExchange = restTemplate.postForObject( serviceUri, student, Student.class,id);
         return restExchange;
     }
 

@@ -1,18 +1,21 @@
-package com.sopregistration.databasediscoveryclient.model.Array;
+package com.sopregistration.databasediscoveryclient.model.ArrayModel;
 
 import com.sopregistration.databasediscoveryclient.model.Subject;
 
 import java.util.List;
 
-public class SubjectList {
-    List<Subject> subjectList;
+public class SubjectArray {
+    private List<Subject> subjectList;
 
-    public SubjectList(List<Subject> subjectList) {
+    // constructor
+
+    public SubjectArray(List<Subject> subjectList) {
         this.subjectList = subjectList;
     }
 
-    public SubjectList() {
-    }
+    public SubjectArray(){}
+
+    // getter setter
 
     public List<Subject> getSubjectList() {
         return subjectList;

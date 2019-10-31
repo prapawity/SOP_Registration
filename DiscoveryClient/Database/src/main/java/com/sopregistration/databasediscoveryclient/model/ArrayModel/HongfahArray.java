@@ -1,19 +1,22 @@
-package com.sopregistration.databasediscoveryclient.model.Array;
+package com.sopregistration.databasediscoveryclient.model.ArrayModel;
 
 import com.sopregistration.databasediscoveryclient.model.HongFah;
 
 import java.util.List;
 
-public class HongFahList {
-    List<HongFah> hongFahList;
+public class HongfahArray {
+    private List<HongFah> hongFahList;
 
-    public HongFahList(){
+    // constructor
 
+    public HongfahArray() {
     }
 
-    public HongFahList(List<HongFah> hongFahList) {
+    public HongfahArray(List<HongFah> hongFahList) {
         this.hongFahList = hongFahList;
     }
+
+    //getter setter
 
     public List<HongFah> getHongFahList() {
         return hongFahList;

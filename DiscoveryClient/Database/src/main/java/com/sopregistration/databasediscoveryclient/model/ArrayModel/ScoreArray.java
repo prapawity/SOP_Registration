@@ -1,17 +1,17 @@
-package com.sopregistration.databasediscoveryclient.model.Array;
+package com.sopregistration.databasediscoveryclient.model.ArrayModel;
 
 import com.sopregistration.databasediscoveryclient.model.Score;
 
 import java.util.List;
 
-public class ScoreList {
-    List<Score> scoreList;
+public class ScoreArray {
+    private List<Score> scoreList;
 
-    public ScoreList(List<Score> scoreList) {
+    public ScoreArray(List<Score> scoreList) {
         this.scoreList = scoreList;
     }
-    public ScoreList(){
 
+    public ScoreArray() {
     }
 
     public List<Score> getScoreList() {

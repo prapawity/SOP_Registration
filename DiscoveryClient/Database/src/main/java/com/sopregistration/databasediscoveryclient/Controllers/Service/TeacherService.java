@@ -1,61 +1,34 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.SubjectRepository;
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.TeacherRepository;
-import com.sopregistration.databasediscoveryclient.model.Subject;
+import com.sopregistration.databasediscoveryclient.model.ArrayModel.TeacherArray;
 import com.sopregistration.databasediscoveryclient.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class TeacherService {
     @Autowired
-    TeacherRepository repository;
+    private TeacherRepository teacherRepository;
 
-    @Autowired
-    SubjectRepository subjectRepository;
-
-    public boolean createTeacher(Teacher teacher){
-        Teacher saved = repository.save(teacher);
-        return saved != null ? true: false;
-        //case if want chk result
+    public Boolean createTeacher(Teacher teacher){
+        Teacher teacher1 = teacherRepository.save(teacher);
+        return teacher1 != null ? true:false;
     }
+     public Teacher getTeacherByID(String id){return teacherRepository.findById(id).get();}
 
-    public Teacher getTeacher(int id){
-        for (Teacher s: repository.findAll()
-        ) {
-            if (id == s.getId()) return s;
-        }
-        return null;
-    }
+     public TeacherArray getAllTeacher(){
+        TeacherArray teacherArray = new TeacherArray(teacherRepository.findAll());
+        return teacherArray;
+     }
 
-    public List<Teacher> getAllTeacher(){ return repository.findAll(); }
-
-    public Boolean deleteTeacher(int id){
-        List<Teacher> teachers = new ArrayList<>();
-        for (Subject s:subjectRepository.findAll()
-             ) {
-            teachers.clear();
-            for (Teacher t:s.getTeacherList()
-                 ) {
-                if(t.getId() != id){
-                    teachers.add(t);
-                }
-            }
-            s.setTeacherList(teachers);
-            subjectRepository.save(s);
-        }
-
-        try {
-            repository.deleteById(id);
-            return false;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
+     public Boolean deleteTeacherByID(String id){
+         try {
+             teacherRepository.deleteById(id);
+             return true;
+         } catch (Exception e) {
+             e.printStackTrace();
+             return false;
+         }
+     }
 }

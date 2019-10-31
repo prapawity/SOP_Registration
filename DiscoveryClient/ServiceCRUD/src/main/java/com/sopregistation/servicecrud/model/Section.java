@@ -1,23 +1,16 @@
-package com.sopregistration.databasediscoveryclient.model;
+package com.sopregistation.servicecrud.model;
 
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Table(name = "section")
+
 public class Section implements Serializable {
-    @Id
     private String id;
 
-    @Column(name = "time")
     private String time;
 
-    @Column(name = "studentList")
     private List<Student> studentList;
 
-    @Column(name = "maxstudent")
     private int maxStudent;
 
     // constructor
@@ -68,3 +61,4 @@ public class Section implements Serializable {
         this.maxStudent = maxStudent;
     }
 }
+

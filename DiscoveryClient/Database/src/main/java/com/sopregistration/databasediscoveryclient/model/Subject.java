@@ -10,12 +10,10 @@ public class Subject implements Serializable {
     @Id
     public int id;
 
-    @ManyToMany
-    @Column(name = "teacher")
+    @Column(name = "teacherList")
     public List<Teacher> teacherList;
 
-    @ManyToMany
-    @Column(name = "section")
+    @Column(name = "sectionList")
     public List<Section> sectionList;
 
     @OneToOne
@@ -34,6 +32,7 @@ public class Subject implements Serializable {
     }
 
     //getter setter
+
 
     public int getId() {
         return id;

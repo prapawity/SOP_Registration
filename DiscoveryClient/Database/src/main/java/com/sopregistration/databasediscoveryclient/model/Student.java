@@ -1,5 +1,4 @@
 package com.sopregistration.databasediscoveryclient.model;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -8,32 +7,32 @@ import java.io.Serializable;
 @Entity
 @Table(name = "student")
 public class Student implements Serializable {
-
     @Id
-    public int id;
+    private int id;
 
     @NotNull
     @Size(min = 2, max = 50)
     @Column(name = "first_name")
-    public String firstName;
+    private String firstName;
 
     @NotNull
     @Size(min = 2, max = 50)
     @Column(name = "last_name")
-    public String lastName;
+    private String lastName;
 
     @NotNull
     @Size(min = 2, max = 50)
     @Column(name = "faculty")
-    public String faculty;
+    private String faculty;
 
     @NotNull
     @Column(name = "sex")
-    public Sex sex;
+    private Sex sex;
 
 //    Constructor
 
-    public Student(int id,@NotNull @Size(min = 2, max = 50) String firstName, @NotNull @Size(min = 2, max = 50) String lastName, @NotNull @Size(min = 2, max = 50) String faculty, @NotNull Sex sex) {
+
+    public Student(int id, @NotNull @Size(min = 2, max = 50) String firstName, @NotNull @Size(min = 2, max = 50) String lastName, @NotNull @Size(min = 2, max = 50) String faculty, @NotNull Sex sex) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,9 +42,6 @@ public class Student implements Serializable {
 
     public Student() {
     }
-
-
-
 
 //    Getter Setter
 

@@ -1,19 +1,24 @@
-package com.sopregistration.databasediscoveryclient.model.Array;
+package com.sopregistation.servicecrud.model.Array;
 
-import com.sopregistration.databasediscoveryclient.model.Teacher;
+import com.sopregistation.servicecrud.model.Teacher;
 
 import java.util.List;
 
 public class TeacherList {
-    List<Teacher> teacherList;
+    private List<Teacher> teacherList;
 
-    public TeacherList(){
+    // constructor
 
+
+    public TeacherList() {
     }
 
     public TeacherList(List<Teacher> teacherList) {
         this.teacherList = teacherList;
     }
+
+    // getter setter
+
 
     public List<Teacher> getTeacherList() {
         return teacherList;

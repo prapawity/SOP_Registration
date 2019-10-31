@@ -6,7 +6,7 @@ import com.sopregistation.servicecrud.model.Student;
 import java.util.List;
 
 public class StudentList {
-    List<Student> studentList;
+    private List<Student> studentList;
 
     public StudentList(List<Student> studentList) {
         this.studentList = studentList;

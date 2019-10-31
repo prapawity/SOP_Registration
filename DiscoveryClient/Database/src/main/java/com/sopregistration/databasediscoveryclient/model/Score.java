@@ -19,7 +19,7 @@ public class Score implements Serializable {
     public Subject subject;
 
     @Column(name = "point")
-    public Double point;
+    public List<Double> point;
 
 
 //    Constructor
@@ -27,7 +27,7 @@ public class Score implements Serializable {
 
     }
 
-    public Score(Student student, Subject subject, Double point) {
+    public Score(Student student, Subject subject, List<Double> point) {
         this.student = student;
         this.subject = subject;
         this.point = point;
@@ -59,11 +59,11 @@ public class Score implements Serializable {
         this.subject = subject;
     }
 
-    public Double getPoint() {
+    public List<Double> getPoint() {
         return point;
     }
 
-    public void setPoint(Double point) {
+    public void setPoint(List<Double> point) {
         this.point = point;
     }
 }

@@ -1,13 +1,13 @@
 package com.sopregistation.servicecrud.model;
 
 public class Student {
-    public int id;
-    public String firstName;
+    private int id;
+    private String firstName;
 
-    public String lastName;
+    private String lastName;
 
-    public String faculty;
-    public Sex sex;
+    private String faculty;
+    private Sex sex;
 
     // constructor
     public Student(){

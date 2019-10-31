@@ -1,63 +1,36 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.HongFahRepository;
+import com.sopregistration.databasediscoveryclient.model.ArrayModel.HongfahArray;
 import com.sopregistration.databasediscoveryclient.model.HongFah;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class HongFahService {
+public class HongfahService {
     @Autowired
-    HongFahRepository hongFahRepository;
+    private HongFahRepository hongFahRepository;
 
-    // define variables
-
-    public boolean createHongfah(HongFah hongFah){
-        HongFah saved = hongFahRepository.save(hongFah);
-        return saved != null ? true: false;
-        //case if want chk result
+    public Boolean createHongfah(HongFah hongFah){
+        HongFah h = hongFahRepository.save(hongFah);
+        return h != null ? true:false;
     }
 
-    //create Hongfah
 
-    public HongFah getHongfah(int id){
-        for (HongFah s: hongFahRepository.findAll()
-        ) {
-            if (id == s.getId()) return s;
-        }
-        return null;
+    public HongFah getHongfahByID(String id){return hongFahRepository.findById(id).get();}
+
+    public HongfahArray getHongfahAll(){
+        HongfahArray hongfahArray = new HongfahArray(hongFahRepository.findAll());
+        return hongfahArray;
     }
 
-    // get HongfahbyID
-
-    public List<HongFah> getAllHongfah(){ return hongFahRepository.findAll(); }
-
-    // getAllHongfah
-
-    public Boolean deleteHongfah(int id){
+    public Boolean deleteHongfahByID(String id){
         try {
-            for (HongFah h: hongFahRepository.findAll()
-                 ) {
-                if(h.getId() == id) {
-                    try {
-                        hongFahRepository.delete(h);
-                        return true;
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        return false;
-                    }
-                }
-            }
-            return false;
+            hongFahRepository.deleteById(id);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-
-    // Delete
 }
-
-
