@@ -14,6 +14,7 @@ public class Section implements Serializable {
     @Column(name = "time")
     private String time;
 
+    @ManyToMany(targetEntity = Student.class)
     @Column(name = "studentList")
     private List<Student> studentList;
 

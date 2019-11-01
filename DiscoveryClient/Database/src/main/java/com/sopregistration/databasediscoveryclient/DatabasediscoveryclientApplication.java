@@ -30,6 +30,8 @@ public class DatabasediscoveryclientApplication {
     private ScoreService scoreService;
     @Autowired
     private SubjectService subjectService;
+    @Autowired
+    private SectionCheckService sectionCheckService;
 
 
     public static void main(String[] args) {
@@ -294,7 +296,7 @@ Subject addSubject(@RequestBody Subject subject){
     SectionArray getSectionAll(){ return sectionService.getAllSection(); }
 
     @RequestMapping(value = "section/{id}", method = RequestMethod.GET)
-    Section getSubjectByID(@PathVariable String id){ return sectionService.getSectionByID(id); }
+    Section getSectionByID(@PathVariable String id){ return sectionService.getSectionByID(id); }
 
     @RequestMapping(value = "section/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSectionID(@PathVariable String id){ return sectionService.deleteSectionByID(id); }
@@ -310,6 +312,41 @@ Subject addSubject(@RequestBody Subject subject){
 
 
     ////////////////////////////////////////////    SectionCheck    ////////////////////////////////////////////
+
+    @RequestMapping(value = "sectioncheck/add", method = RequestMethod.POST)
+    SectionCheckArray addSectionCheck(@RequestBody SectionCheckArray sections){
+        Boolean chk;
+        SectionCheckArray sectionList;
+        List<SectionChecked> list = new ArrayList<>();
+        list.clear();
+        for (SectionChecked i: sections.getCheckedList()
+        ) {
+            chk = sectionCheckService.createSectionCheck(i);
+            if(chk == false){
+                sectionList = new SectionCheckArray(list);
+                return sectionList;
+            }
+            else{
+                list.add(sectionCheckService.getSectionByID(i.getId()));
+            }
+        }
+        sectionList = new SectionCheckArray(list);
+        return sectionList;
+    }
+
+    @RequestMapping(value = "sectioncheck/update/{id}", method = RequestMethod.POST)
+    SectionChecked updateSectionCheck(@RequestBody SectionChecked section,@PathVariable int id){ return sectionCheckService.createSectionCheck(section) != false ? sectionCheckService.getSectionByID(id) : null; }
+
+
+    @RequestMapping(value = "SectionChecks", method = RequestMethod.GET)
+    SectionCheckArray getSectionAllCheck(){ return sectionCheckService.getAllSectionCheck(); }
+
+    @RequestMapping(value = "sectionCheck/{id}", method = RequestMethod.GET)
+    SectionChecked getSectioncheckByID(@PathVariable int id){ return sectionCheckService.getSectionByID(id); }
+
+    @RequestMapping(value = "sectionCheck/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSectionCheckID(@PathVariable int id){ return sectionCheckService.deleteSectionCheck(id); }
+
 
 
 

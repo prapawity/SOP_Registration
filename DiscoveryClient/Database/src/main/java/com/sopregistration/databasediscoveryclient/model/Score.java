@@ -2,7 +2,7 @@ package com.sopregistration.databasediscoveryclient.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -10,16 +10,15 @@ import java.util.List;
 public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-
-    @ManyToOne
-    public Student student;
-
-    @ManyToOne
-    public Subject subject;
+    private int id;
+    @ManyToOne(targetEntity = Student.class)
+    private Student student;
+    @ManyToOne(targetEntity = Subject.class)
+    private Subject subject;
 
     @Column(name = "point")
-    public List<Double> point;
+    @OneToMany(targetEntity = PointsTable.class,mappedBy = "score", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PointsTable> pointsTable;
 
 
 //    Constructor
@@ -27,10 +26,15 @@ public class Score implements Serializable {
 
     }
 
-    public Score(Student student, Subject subject, List<Double> point) {
+    public Score(Student student, Subject subject, Set<PointsTable> pointsTable) {
         this.student = student;
         this.subject = subject;
-        this.point = point;
+        this.pointsTable = pointsTable;
+    }
+
+    public Score(Student student, Subject subject) {
+        this.student = student;
+        this.subject = subject;
     }
     //    Getter Setter
 
@@ -59,11 +63,11 @@ public class Score implements Serializable {
         this.subject = subject;
     }
 
-    public List<Double> getPoint() {
-        return point;
+    public Set<PointsTable> getPointsTable() {
+        return pointsTable;
     }
 
-    public void setPoint(List<Double> point) {
-        this.point = point;
+    public void setPointsTable(Set<PointsTable> pointsTable) {
+        this.pointsTable = pointsTable;
     }
 }

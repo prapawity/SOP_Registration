@@ -11,12 +11,14 @@ public class Subject implements Serializable {
     public int id;
 
     @Column(name = "teacherList")
+    @ElementCollection(targetClass=Teacher.class)
     public List<Teacher> teacherList;
 
     @Column(name = "sectionList")
+    @ElementCollection(targetClass=Section.class)
     public List<Section> sectionList;
 
-    @OneToOne
+    @OneToOne(targetEntity = Demographic.class)
     public Demographic demographic;
 
     //constructor
