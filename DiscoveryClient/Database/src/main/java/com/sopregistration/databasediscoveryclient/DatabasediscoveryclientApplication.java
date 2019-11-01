@@ -2,10 +2,7 @@ package com.sopregistration.databasediscoveryclient;
 
 import com.sopregistration.databasediscoveryclient.Controllers.Service.*;
 import com.sopregistration.databasediscoveryclient.model.*;
-import com.sopregistration.databasediscoveryclient.model.ArrayModel.HongfahArray;
-import com.sopregistration.databasediscoveryclient.model.ArrayModel.SectionArray;
-import com.sopregistration.databasediscoveryclient.model.ArrayModel.StudentArray;
-import com.sopregistration.databasediscoveryclient.model.ArrayModel.TeacherArray;
+import com.sopregistration.databasediscoveryclient.model.ArrayModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +26,10 @@ public class DatabasediscoveryclientApplication {
     private TeacherService teacherService;
     @Autowired
     private SectionService sectionService;
+    @Autowired
+    private ScoreService scoreService;
+    @Autowired
+    private SubjectService subjectService;
 
 
     public static void main(String[] args) {
@@ -73,6 +74,41 @@ public class DatabasediscoveryclientApplication {
 
 
     ////////////////////////////////////////////    Score            ////////////////////////////////////////////
+
+    @RequestMapping(value = "score/add", method = RequestMethod.POST)
+    ScoreArray addScore(@RequestBody ScoreArray scoreList){
+        List<Score> newscore = new ArrayList<Score>();
+        ScoreArray scoreList1;
+        newscore.clear();
+        boolean chk;
+        for (Score s: scoreList.getScoreList()
+        ) {
+            chk = scoreService.createScore(s);
+            if(chk == false) {
+                scoreList1 = new ScoreArray(newscore);
+                return scoreList1;
+            }
+            else {
+                newscore.add(scoreService.getScoreByID(s.getId()));
+            }
+
+        }
+        scoreList1 = new ScoreArray(newscore);
+        return scoreList1;
+    }
+
+    @RequestMapping(value = "score", method = RequestMethod.GET)
+    ScoreArray getAllScore(){ return scoreService.getAllScore(); }
+
+    @RequestMapping(value = "score/update/{id}", method = RequestMethod.POST)
+    Score updateScore(@RequestBody Score score,@PathVariable int id){ return scoreService.createScore(score) != false ? scoreService.getScoreByID(id) : null; }
+
+    @RequestMapping(value = "score/{id}", method = RequestMethod.GET)
+    Score getScoreByID(@PathVariable int id){ return scoreService.getScoreByID(id); }
+
+    @RequestMapping(value = "score/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteScoreID(@PathVariable int id){ return scoreService.deleteScore(id); }
+
 
 
 
@@ -167,6 +203,27 @@ public class DatabasediscoveryclientApplication {
 
     ////////////////////////////////////////////       Demographic        ///////////////////////////////////////////
 
+//    @RequestMapping(value = "demographic/add", method = RequestMethod.POST)
+//    Demographic addDemo(@RequestBody Demographic demographic){
+//        Demographic demographic1 = new Demographic();
+//        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(demographic.getId()) : demographic1;
+//    }
+//    @RequestMapping(value = "demographic/update/{id}", method = RequestMethod.POST)
+//    Demographic updateDemo(@RequestBody Demographic demographic, @PathVariable String id){
+//        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(id) : null;
+//    }
+//
+//    @RequestMapping(value = "demographic", method = RequestMethod.GET)
+//    DemographicList getAllDemo(){
+//        DemographicList demographicList = new DemographicList(demographicService.getAllDemographic());
+//        return demographicList; }
+//
+//    @RequestMapping(value = "demographic/{id}", method = RequestMethod.GET)
+//    Demographic getDemoID(@PathVariable String id){ return demographicService.getDemoID(id); }
+//
+//    @RequestMapping(value = "demographic/delete/{id}", method = RequestMethod.GET)
+//    Boolean deleteDemoID(@PathVariable String id){ return demographicService.deleteDemographic(id); }
+
 
 
 
@@ -175,6 +232,25 @@ public class DatabasediscoveryclientApplication {
 //    ////////////////////////////////////////////    End - Demographic    ////////////////////////////////////////////
 
 //    ////////////////////////////////////////////       Subject        ///////////////////////////////////////////
+@RequestMapping(value = "subject/add", method = RequestMethod.POST)
+Subject addSubject(@RequestBody Subject subject){
+    Subject newSub = new Subject();
+    return subjectService.createSubject(subject) == true ? subjectService.getSubjectByID(subject.getId()): newSub;
+}
+
+    // this service is important, why can't add by array
+
+    @RequestMapping(value = "subject/update/{id}", method = RequestMethod.POST)
+    Subject updateSubject(@RequestBody Subject subject,@PathVariable int id){ return subjectService.createSubject(subject) != false ? subjectService.getSubjectByID(id) : null; }
+
+    @RequestMapping(value = "subject", method = RequestMethod.GET)
+    SubjectArray getSubjectAll(){ return subjectService.getAllSubject();}
+
+    @RequestMapping(value = "subject/{id}", method = RequestMethod.GET)
+    Subject getSubjectByID(@PathVariable int id){ return subjectService.getSubjectByID(id); }
+
+    @RequestMapping(value = "subject/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSubjectID(@PathVariable int id){ return subjectService.deleteSubject(id); }
 
 
 
@@ -234,6 +310,8 @@ public class DatabasediscoveryclientApplication {
 
 
     ////////////////////////////////////////////    SectionCheck    ////////////////////////////////////////////
+
+
 
     ////////////////////////////////////////////    End - SectionCheck    ////////////////////////////////////////////
 }
