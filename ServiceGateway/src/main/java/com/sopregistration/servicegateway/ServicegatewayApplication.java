@@ -10,8 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-@EnableResourceServer
-@EnableAuthorizationServer
+
 public class ServicegatewayApplication {
 
     public static void main(String[] args) {
