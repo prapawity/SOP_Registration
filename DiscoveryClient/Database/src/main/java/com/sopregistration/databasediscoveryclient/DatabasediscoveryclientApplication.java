@@ -32,6 +32,8 @@ public class DatabasediscoveryclientApplication {
     private SubjectService subjectService;
     @Autowired
     private SectionCheckService sectionCheckService;
+    @Autowired
+    DemographicService demographicService;
 
 
     public static void main(String[] args) {
@@ -205,11 +207,11 @@ public class DatabasediscoveryclientApplication {
 
     ////////////////////////////////////////////       Demographic        ///////////////////////////////////////////
 
-//    @RequestMapping(value = "demographic/add", method = RequestMethod.POST)
-//    Demographic addDemo(@RequestBody Demographic demographic){
-//        Demographic demographic1 = new Demographic();
-//        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(demographic.getId()) : demographic1;
-//    }
+    @RequestMapping(value = "demographic/add", method = RequestMethod.POST)
+    Demographic addDemo(@RequestBody Demographic demographic){
+        Demographic demographic1 = new Demographic();
+        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(demographic.getId()) : demographic1;
+    }
 //    @RequestMapping(value = "demographic/update/{id}", method = RequestMethod.POST)
 //    Demographic updateDemo(@RequestBody Demographic demographic, @PathVariable String id){
 //        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(id) : null;
