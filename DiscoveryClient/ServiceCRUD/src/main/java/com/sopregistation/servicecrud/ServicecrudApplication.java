@@ -1,17 +1,8 @@
 package com.sopregistation.servicecrud;
 
-import com.sopregistation.servicecrud.model.Array.HongfahList;
-import com.sopregistation.servicecrud.model.Array.SectionList;
-import com.sopregistation.servicecrud.model.Array.StudentList;
-import com.sopregistation.servicecrud.model.Array.TeacherList;
-import com.sopregistation.servicecrud.model.HongFah;
-import com.sopregistation.servicecrud.model.Section;
-import com.sopregistation.servicecrud.model.Student;
-import com.sopregistation.servicecrud.model.Teacher;
-import com.sopregistation.servicecrud.service.HongfahService;
-import com.sopregistation.servicecrud.service.SectionService;
-import com.sopregistation.servicecrud.service.StudentService;
-import com.sopregistation.servicecrud.service.TeacherService;
+import com.sopregistation.servicecrud.model.*;
+import com.sopregistation.servicecrud.model.Array.*;
+import com.sopregistation.servicecrud.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,7 +23,8 @@ public class ServicecrudApplication {
     private TeacherService teacherService;
     @Autowired
     private SectionService sectionService;
-
+    @Autowired
+    private SubjectService subjectService;
 
 
     // define variable
@@ -130,5 +122,24 @@ public class ServicecrudApplication {
     @RequestMapping(value = "/section/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSection(@PathVariable String id){return sectionService.deleteSectionByID(id);}
 
+    ////////////////////////////////////////   end Section  ///////////////////////////////////////////
 
-} ////////////////////////////////////////   end Section  ///////////////////////////////////////////
+    //////////////////////////////////////////    Subject    ///////////////////////////////////////////
+
+    @RequestMapping(value = "/subject/create", method = RequestMethod.POST)
+    Subject createTeacher(@RequestBody Subject subject){return subjectService.createSubject(subject);}
+
+    @RequestMapping(value = "/subject", method = RequestMethod.GET)
+    SubjectList getAllSubject(){return subjectService.getAllSubject();}
+
+    @RequestMapping(value = "/subject/{id}", method = RequestMethod.GET)
+    Subject getSubjectByID(@PathVariable String id){return subjectService.getSubjectByID(id);}
+
+    @RequestMapping(value = "/subject/update/{id}", method = RequestMethod.POST)
+    Subject updateSubjectByid(@RequestBody Subject s, @PathVariable String id){return subjectService.updateSubject(s,id);}
+
+    @RequestMapping(value = "/subject/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSubject(@PathVariable String id){return subjectService.deleteSubjectByID(id);}
+
+    ////////////////////////////////////////   end Subject   ///////////////////////////////////////////
+}
