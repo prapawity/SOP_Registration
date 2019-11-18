@@ -16,7 +16,7 @@ zuul:
     database: /database/**
     servicecrud: /servicecrud/**
     teacher-service: /teacher-service/**
-    
+
 security:
   oauth2:
     client:

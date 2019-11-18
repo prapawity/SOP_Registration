@@ -12,8 +12,8 @@ ReactDOM.render(
     <Router history={browserHistory}>
         <Loaders/>
         <Route path="/" component={firstPage}/>
-        {/* <Route exact path="/" component={App}/>
-        <Route path="/test2" component={Test}/>
+        {/* <Route exact path="/mainpage" component={App}/> */}
+        {/* <Route path="/test2" component={Test}/>
         <Route path="/home" component={Navbar}/> */}
     </Router>,document.getElementById("root")
 );
