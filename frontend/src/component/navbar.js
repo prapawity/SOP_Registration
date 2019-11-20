@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Link
+} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import '../assets/navbar.css'
 import AppBar from '@material-ui/core/AppBar';
@@ -161,17 +165,19 @@ export default function PrimarySearchAppBar() {
                 <Grid container justify="flex-end" spacing={spacing}>
          
                     <div className="notburger">
+                    <Link to="/signin">
                         <Fab
                           variant="extended"
                           size="medium"
                           color="primary"
                           aria-label="add"
                           className={classes.margin}>         
-                        <NavigationIcon className={classes.extendedIcon} />
-                        <div id="getstart">
-                          Get Started
-                        </div>
-                      </Fab>
+                          <NavigationIcon className={classes.extendedIcon} />
+                          <div id="getstart">
+                            Get Started
+                          </div>
+                        </Fab>
+                      </Link>
                     </div>
                   <div className="burger">
                     <IconButton edge="start" className={classes.menuButton} color="primary" aria-label="menu" onClick={handleDrawerOpen}>
