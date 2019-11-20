@@ -6,6 +6,11 @@ spring:
   cloud:
     config:
       enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/sopregistration
 server:
   port: 8002
 eureka:

@@ -36,9 +36,7 @@ public class ServicecrudApplication {
     /////////////////////////////////// Student //////////////////////////////////////
 
     @RequestMapping(value = "/student/create", method = RequestMethod.POST)
-    StudentList createStudent(@RequestBody StudentList student){
-        return studentService.createStudent(student);
-    }
+    StudentList createStudent(@RequestBody StudentList student){ return studentService.createStudent(student); }
 
     @RequestMapping(value = "/student", method = RequestMethod.GET)
     StudentList allStudent(){

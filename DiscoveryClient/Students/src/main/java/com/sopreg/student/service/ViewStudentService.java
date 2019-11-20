@@ -18,8 +18,8 @@ public class ViewStudentService {
 
     public Student getStudent(int id){
         RestTemplate restTemplate = new RestTemplate();
-        List<ServiceInstance> instances = discoveryClient.getInstances("servicecrud");
-        String serviceUri = String.format("%s/student/%d" ,instances.get(0).getUri().toString(), id);
+        List<ServiceInstance> instances = discoveryClient.getInstances("database");
+        String serviceUri = String.format("%s/user/student/%d" ,instances.get(0).getUri().toString(), id);
         ResponseEntity< Student > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, Student.class, id);
         return restExchange.getBody();
     }

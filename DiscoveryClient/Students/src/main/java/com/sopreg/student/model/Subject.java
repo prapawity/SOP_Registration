@@ -1,7 +1,5 @@
 package com.sopreg.student.model;
 
-import sun.swing.SwingUtilities2;
-
 import java.util.List;
 
 public class Subject {

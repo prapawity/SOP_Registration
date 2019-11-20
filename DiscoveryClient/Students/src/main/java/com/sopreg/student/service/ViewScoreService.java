@@ -1,6 +1,7 @@
 package com.sopreg.student.service;
 
 import com.sopreg.student.model.Score;
+import com.sopreg.student.model.array.ScoreList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -16,11 +17,19 @@ public class ViewScoreService {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    public Score getScore(int id) {
+    public Score getScoreByID(int id) {
         RestTemplate restTemplate = new RestTemplate();
-        List<ServiceInstance> instances = discoveryClient.getInstances("servicestudent");
+        List<ServiceInstance> instances = discoveryClient.getInstances("database");
         String serviceUri = String.format("%s/score/%d" ,instances.get(0).getUri().toString(), id);
         ResponseEntity< Score > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, Score.class, id);
+        return restExchange.getBody();
+    }
+
+    public ScoreList getAllScore() {
+        RestTemplate restTemplate = new RestTemplate();
+        List<ServiceInstance> instances = discoveryClient.getInstances("database");
+        String serviceUri = String.format("%s/score" ,instances.get(0).getUri().toString());
+        ResponseEntity< ScoreList > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, ScoreList.class);
         return restExchange.getBody();
     }
 }
