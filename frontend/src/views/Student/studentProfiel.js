@@ -29,6 +29,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
 import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
+import Profile from './../../component/profileStudent'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -180,6 +181,8 @@ const [anchorEl, setAnchorEl] = React.useState(null);
 
   useEffect(() => {
     // execute Loader
+
+    
     var delayInMilliseconds = 3000; //3 second
     var test = document.getElementsByClassName('MuiPaper-root');
     for(var i = 0; i < test.length; i++) { 
@@ -237,15 +240,9 @@ const [anchorEl, setAnchorEl] = React.useState(null);
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
             <InboxIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="LogOut" />
         </StyledMenuItem>
       </StyledMenu>
         </Toolbar>
@@ -269,7 +266,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        
+        <Profile/>
       </main>
     </div>
   );

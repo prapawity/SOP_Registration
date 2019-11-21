@@ -15,7 +15,7 @@ ReactDOM.render(
         <Loaders/>
         <Route exact path="/" component={firstPage}/>
         <Route exact path="/signin" component={SignIn}/>
-        <Route exact path="/student" component={StudentProfile}/>
+        <Route exact path="/student/profile" component={StudentProfile}/>
         {/* <Route exact path="/" component={App}/>
         <Route path="/test2" component={Test}/>
         <Route path="/home" component={Navbar}/> */}
