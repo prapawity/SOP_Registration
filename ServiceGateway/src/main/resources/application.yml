@@ -15,3 +15,12 @@ zuul:
       serviceId: database
     database: /database/**
     servicecrud: /servicecrud/**
+    teacher-service: /teacher-service/**
+
+security:
+  oauth2:
+    client:
+      client-id: clientId
+      client-secret: clientSecret
+      authorized-grant-types: authorization_code, refresh_token, password
+      scope: openid
