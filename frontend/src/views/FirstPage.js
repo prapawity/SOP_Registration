@@ -13,6 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import Footer from '../component/footer'
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
+import {
+    BrowserRouter as Router,
+    Link
+  } from "react-router-dom";
 
 
 // import
@@ -104,9 +108,11 @@ function FirstPage() {
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                 </Typography>
                             </CardContent>
-                            <Button variant="outlined" color="primary" className={`${classes.button} ${classes.trybtn}`}>
-                                Primary
-                            </Button>
+                            <Link to="/signin">
+                                <Button variant="outlined" color="primary" className={`${classes.button} ${classes.trybtn}`}>
+                                    Try it now
+                                </Button>
+                            </Link>
                         </Card>
                     </Grid>
                     <Grid container justify="center" item xs={12} md={8} >
@@ -154,9 +160,12 @@ function FirstPage() {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                         </Typography>
                     </CardContent>
-                    <Button variant="outlined" color="primary" className={`${classes.button} ${classes.trybtn}`}>
-                        Primary
-                    </Button>
+                    <Link to="/signin">
+                        <Button variant="outlined" color="primary" className={`${classes.button} ${classes.trybtn}`}>
+                            Get Start
+                        </Button>
+                    </Link>
+
                 </Card>
             </Grid>
 

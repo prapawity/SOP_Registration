@@ -5,15 +5,19 @@ import * as serviceWorker from './serviceWorker';
 import {Router,Route,Link} from 'react-router'
 import { createBrowserHistory } from "history"
 import firstPage from './views/FirstPage'
+import SignIn from './views/signIn'
 import Loaders from './component/loader';
+import StudentProfile from './views/Student/studentProfiel'
 let browserHistory = createBrowserHistory()
 
 ReactDOM.render(
     <Router history={browserHistory}>
         <Loaders/>
-        <Route path="/" component={firstPage}/>
-        {/* <Route exact path="/mainpage" component={App}/> */}
-        {/* <Route path="/test2" component={Test}/>
+        <Route exact path="/" component={firstPage}/>
+        <Route exact path="/signin" component={SignIn}/>
+        <Route exact path="/student/profile" component={StudentProfile}/>
+        {/* <Route exact path="/" component={App}/>
+        <Route path="/test2" component={Test}/>
         <Route path="/home" component={Navbar}/> */}
     </Router>,document.getElementById("root")
 );

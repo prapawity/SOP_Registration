@@ -17,3 +17,12 @@ code {
 #29487d
 white
  */
+
+ a { 
+   text-decoration: none;
+ }
+
+ #avatar{
+  background-color: transparent !important;
+  box-shadow: none !important;
+ }
