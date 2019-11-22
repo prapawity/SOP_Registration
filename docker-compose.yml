@@ -1,0 +1,22 @@
+version: '3.7'
+
+# Define services
+services:
+  # App backend service
+  database:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: DiscoveryClient/Database # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+  discoveryserver:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: DiscoveryServers # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+
