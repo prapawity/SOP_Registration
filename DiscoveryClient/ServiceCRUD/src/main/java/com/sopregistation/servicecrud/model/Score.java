@@ -1,13 +1,12 @@
-package com.sopreg.student.model;
+package com.sopregistation.servicecrud.model;
 
-import java.util.List;
 import java.util.Set;
 
 public class Score {
     private int id;
     private Student student;
     private Subject subject;
-    private List<PointsTable> pointsTable;
+    private Set<PointsTable> pointsTable;
 
     public Score(){}
 
@@ -40,11 +39,12 @@ public class Score {
         this.subject = subject;
     }
 
-    public List<PointsTable> getPointsTable() {
+    public Set<PointsTable> getPointsTable() {
         return pointsTable;
     }
 
-    public void setPointsTable(List<PointsTable> pointsTable) {
+    public void setPointsTable(Set<PointsTable> pointsTable) {
         this.pointsTable = pointsTable;
     }
 }
+

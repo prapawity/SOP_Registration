@@ -25,6 +25,8 @@ public class ServicecrudApplication {
     private SectionService sectionService;
     @Autowired
     private SubjectService subjectService;
+    @Autowired
+    private ScoreService scoreService;
 
 
     // define variable
@@ -140,4 +142,14 @@ public class ServicecrudApplication {
     Boolean deleteSubject(@PathVariable String id){return subjectService.deleteSubjectByID(id);}
 
     ////////////////////////////////////////   end Subject   ///////////////////////////////////////////
+
+    //////////////////////////////////////////    Score    ///////////////////////////////////////////
+
+    @RequestMapping(value = "/score/create", method = RequestMethod.POST)
+    ScoreList createScore(@RequestBody ScoreList score){return scoreService.createScore(score);}
+
+    @RequestMapping(value = "/points/create", method = RequestMethod.POST)
+    PointList createPoint(@RequestBody PointList points){return scoreService.createPoint(points);}
+
+    ////////////////////////////////////////   end Score   ///////////////////////////////////////////
 }

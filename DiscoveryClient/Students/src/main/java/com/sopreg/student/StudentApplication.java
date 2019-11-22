@@ -23,6 +23,8 @@ public class StudentApplication {
     private AttendClassService attendClassService;
     @Autowired
     private ViewScoreService viewScoreService;
+    @Autowired
+    private AddScoreService addScoreService;
 
     public static void main(String[] args) {
         SpringApplication.run(StudentApplication.class, args);
@@ -42,4 +44,10 @@ public class StudentApplication {
 
     @RequestMapping(value = "/sectioncheck/{id}", method = RequestMethod.GET)
     SectionCheckList classAttendance(@PathVariable int id){ return attendClassService.getAllCheckstatusByID(id); }
+
+    @RequestMapping(value = "/score/create", method = RequestMethod.POST)
+    ScoreList createScore(@RequestBody ScoreList score){return addScoreService.createScore(score);}
+
+    @RequestMapping(value = "/points/create", method = RequestMethod.POST)
+    PointList createPoint(@RequestBody PointList points){return addScoreService.createPoint(points);}
 }

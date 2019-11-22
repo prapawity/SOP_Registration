@@ -2,6 +2,7 @@ package com.sopregistration.databasediscoveryclient.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 
@@ -17,8 +18,8 @@ public class Score implements Serializable {
     private Subject subject;
 
     @Column(name = "point")
-    @OneToMany(targetEntity = PointsTable.class,mappedBy = "score", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<PointsTable> pointsTable;
+    @OneToMany(targetEntity = PointsTable.class,mappedBy = "score")
+    private List<PointsTable> pointsTable;
 
 
 //    Constructor
@@ -26,7 +27,7 @@ public class Score implements Serializable {
 
     }
 
-    public Score(Student student, Subject subject, Set<PointsTable> pointsTable) {
+    public Score(Student student, Subject subject, List<PointsTable> pointsTable) {
         this.student = student;
         this.subject = subject;
         this.pointsTable = pointsTable;
@@ -63,11 +64,11 @@ public class Score implements Serializable {
         this.subject = subject;
     }
 
-    public Set<PointsTable> getPointsTable() {
+    public List<PointsTable> getPointsTable() {
         return pointsTable;
     }
 
-    public void setPointsTable(Set<PointsTable> pointsTable) {
+    public void setPointsTable(List<PointsTable> pointsTable) {
         this.pointsTable = pointsTable;
     }
 }

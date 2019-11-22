@@ -3,16 +3,21 @@ package com.sopreg.student.model;
 import java.util.List;
 
 public class Subject {
-    private int id;
+    private String id;
     private Demographic demographic;
 
     public Subject(){}
 
-    public int getId() {
+    public Subject(String id, Demographic demographic) {
+        this.id = id;
+        this.demographic = demographic;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -20,8 +25,6 @@ public class Subject {
         return demographic;
     }
 
-    public void setDemographic(Demographic demographic) {
-        this.demographic = demographic;
-    }
+    public void setDemographic(Demographic demographic) { this.demographic = demographic; }
 
 }

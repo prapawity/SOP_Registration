@@ -34,6 +34,8 @@ public class DatabasediscoveryclientApplication {
     private SectionCheckService sectionCheckService;
     @Autowired
     DemographicService demographicService;
+    @Autowired
+    private GetScorePointService getscorepointService;
 
 
     public static void main(String[] args) {
@@ -118,6 +120,32 @@ public class DatabasediscoveryclientApplication {
 
     ////////////////////////////////////////////    End - Score    ////////////////////////////////////////////
 
+
+    ////////////////////////////////////////////    Point            ////////////////////////////////////////////
+
+    @RequestMapping(value = "points/add", method = RequestMethod.POST)
+    PointArray addPoint(@RequestBody PointArray pointsTableList){
+        List<PointsTable> newpoint = new ArrayList<>();
+        PointArray pointList1;
+        newpoint.clear();
+        boolean chk;
+        for (PointsTable p: pointsTableList.getPointsTableList()
+        ) {
+            chk = getscorepointService.createPoint(p);
+            if(chk == false) {
+                pointList1 = new PointArray(newpoint);
+                return pointList1;
+            }
+            else {
+                newpoint.add(getscorepointService.getPointByID(p.getId()));
+            }
+
+        }
+        pointList1 = new PointArray(newpoint);
+        return pointList1;
+    }
+
+    ////////////////////////////////////////////    End - Point    ////////////////////////////////////////////
 
 
     ////////////////////////////////////////////    HongFah        ////////////////////////////////////////////
