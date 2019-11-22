@@ -1,6 +1,7 @@
 package com.teacher.teacher;
 
 import com.teacher.teacher.model.*;
+import com.teacher.teacher.model.array.StudentList;
 import com.teacher.teacher.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -31,12 +32,22 @@ public class TeacherApplication {
         SpringApplication.run(TeacherApplication.class, args);
     }
 
-    @RequestMapping(value = "/student/view", method = RequestMethod.GET)
-    Student viewPersoninfo(@PathVariable int id){ return viewStudentService.getStudent(id); }
+    @RequestMapping(value = "/student/view/{id}", method = RequestMethod.GET)
+    Student viewPersoninfo(@PathVariable int id){
+        return viewStudentService.getStudent(id);
+    }
 
-    @RequestMapping(value = "/subject/view", method = RequestMethod.GET)
+    @RequestMapping(value = "/student", method = RequestMethod.GET)
+    StudentList allStudent(){
+        return viewStudentService.getAllStudent();
+    }
+
+
+    @RequestMapping(value = "/subject/view/{id}", method = RequestMethod.GET)
     Subject viewSubjectdemo(@PathVariable int id){ return viewSubjectService.getSubject(id); }
 
     @RequestMapping(value = "/score/{id}", method = RequestMethod.GET)
-    Score viewScore(@PathVariable String id){ return null; }
+    Score viewScore(@PathVariable int id){ return viewScoreService.getScore(id); }
+
+
 }

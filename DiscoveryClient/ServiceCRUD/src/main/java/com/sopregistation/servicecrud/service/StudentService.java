@@ -34,7 +34,7 @@ public class StudentService {
     public StudentList getAllStudent() {
         RestTemplate restTemplate = new RestTemplate();
         List<ServiceInstance> instances = discoveryClient.getInstances("database");
-        String serviceUri = String.format("%s/user/student" ,instances.get(0).getUri().toString());
+        String serviceUri = String.format("%s/user/students" ,instances.get(0).getUri().toString());
         ResponseEntity< StudentList > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, StudentList.class);
         return restExchange.getBody();
     }
