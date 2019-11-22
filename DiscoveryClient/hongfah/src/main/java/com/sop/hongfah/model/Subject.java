@@ -1,5 +1,4 @@
-package com.sopregistation.servicecrud.model;
-
+package com.sop.hongfah.model;
 
 import java.util.List;
 
