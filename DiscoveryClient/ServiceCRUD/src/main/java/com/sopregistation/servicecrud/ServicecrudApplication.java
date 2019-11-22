@@ -25,6 +25,8 @@ public class ServicecrudApplication {
     private SectionService sectionService;
     @Autowired
     private SubjectService subjectService;
+    @Autowired
+    private SectionCheckService sectionCheckService;
 
 
     // define variable
@@ -142,4 +144,23 @@ public class ServicecrudApplication {
     Boolean deleteSubject(@PathVariable String id){return subjectService.deleteSubjectByID(id);}
 
     ////////////////////////////////////////   end Subject   ///////////////////////////////////////////
+
+    //////////////////////////////////////////    SectionCheck    ///////////////////////////////////////////
+
+    @RequestMapping(value = "/sectionCheck/create", method = RequestMethod.POST)
+    SectionCheckArray createSectionCheck(@RequestBody SectionCheckArray check){return sectionCheckService.createSection(check);}
+
+    @RequestMapping(value = "/sectionCheck", method = RequestMethod.GET)
+    SectionCheckArray getAllSectionCheck(){return sectionCheckService.getAllSectionCheck();}
+
+    @RequestMapping(value = "/sectionCheck/{id}", method = RequestMethod.GET)
+    SectionChecked getSectionChecktByID(@PathVariable int id){return sectionCheckService.getSectionChecktByID(id);}
+
+    @RequestMapping(value = "/sectionCheck/update/{id}", method = RequestMethod.POST)
+    SectionChecked updateSubjectByid(@RequestBody SectionChecked s, @PathVariable int id){return sectionCheckService.updateSectionCheck(s,id);}
+
+    @RequestMapping(value = "/sectionCheck/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSectionCheck(@PathVariable int id){return sectionCheckService.deleteSectionCheckByID(id);}
+
+    ////////////////////////////////////////   end SectionCheck   ///////////////////////////////////////////
 }

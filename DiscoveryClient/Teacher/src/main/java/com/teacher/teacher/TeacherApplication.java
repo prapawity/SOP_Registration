@@ -1,16 +1,14 @@
 package com.teacher.teacher;
 
 import com.teacher.teacher.model.*;
+import com.teacher.teacher.model.array.SectionCheckArray;
 import com.teacher.teacher.model.array.StudentList;
 import com.teacher.teacher.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @EnableEurekaClient
@@ -26,6 +24,8 @@ public class TeacherApplication {
     private ViewSubjectService viewSubjectService;
     @Autowired
     private ViewTeacherService viewTeacherService;
+    @Autowired
+    private SectionCheckerService sectionCheckService;
 
     public static void main(String[] args) {
 
@@ -42,12 +42,24 @@ public class TeacherApplication {
         return viewStudentService.getAllStudent();
     }
 
-
     @RequestMapping(value = "/subject/view/{id}", method = RequestMethod.GET)
     Subject viewSubjectdemo(@PathVariable int id){ return viewSubjectService.getSubject(id); }
 
     @RequestMapping(value = "/score/{id}", method = RequestMethod.GET)
     Score viewScore(@PathVariable int id){ return viewScoreService.getScore(id); }
 
+    @RequestMapping(value = "/sectionCheck/create", method = RequestMethod.POST)
+    SectionCheckArray createSectionCheck(@RequestBody SectionCheckArray check){return sectionCheckService.createSection(check);}
 
+    @RequestMapping(value = "/sectionCheck", method = RequestMethod.GET)
+    SectionCheckArray getAllSectionCheck(){return sectionCheckService.getAllSectionCheck();}
+
+    @RequestMapping(value = "/sectionCheck/{id}", method = RequestMethod.GET)
+    SectionChecked getSectionChecktByID(@PathVariable int id){return sectionCheckService.getSectionChecktByID(id);}
+
+    @RequestMapping(value = "/sectionCheck/update/{id}", method = RequestMethod.POST)
+    SectionChecked updateSubjectByid(@RequestBody SectionChecked s, @PathVariable int id){return sectionCheckService.updateSectionCheck(s,id);}
+
+    @RequestMapping(value = "/sectionCheck/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSectionCheck(@PathVariable int id){return sectionCheckService.deleteSectionCheckByID(id);}
 }

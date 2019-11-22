@@ -287,7 +287,7 @@ Subject addSubject(@RequestBody Subject subject){
         }
     }
     sectionList = new SectionArray(list);
-    return sectionList;
+    return sections;
 }
 
     @RequestMapping(value = "section/update/{id}", method = RequestMethod.POST)
@@ -329,22 +329,22 @@ Subject addSubject(@RequestBody Subject subject){
                 return sectionList;
             }
             else{
-                list.add(sectionCheckService.getSectionByID(i.getId()));
+                list.add(sectionCheckService.getSectionCheckByID(i.getId()));
             }
         }
         sectionList = new SectionCheckArray(list);
-        return sectionList;
+        return sections;
     }
 
     @RequestMapping(value = "sectioncheck/update/{id}", method = RequestMethod.POST)
-    SectionChecked updateSectionCheck(@RequestBody SectionChecked section,@PathVariable int id){ return sectionCheckService.createSectionCheck(section) != false ? sectionCheckService.getSectionByID(id) : null; }
+    SectionChecked updateSectionCheck(@RequestBody SectionChecked section,@PathVariable int id){ return sectionCheckService.update(section, id) != false ? sectionCheckService.getSectionCheckByID(id) : null; }
 
 
     @RequestMapping(value = "SectionChecks", method = RequestMethod.GET)
     SectionCheckArray getSectionAllCheck(){ return sectionCheckService.getAllSectionCheck(); }
 
     @RequestMapping(value = "sectionCheck/{id}", method = RequestMethod.GET)
-    SectionChecked getSectioncheckByID(@PathVariable int id){ return sectionCheckService.getSectionByID(id); }
+    SectionChecked getSectioncheckByID(@PathVariable int id){ return sectionCheckService.getSectionCheckByID(id); }
 
     @RequestMapping(value = "sectionCheck/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSectionCheckID(@PathVariable int id){ return sectionCheckService.deleteSectionCheck(id); }

@@ -11,8 +11,10 @@ public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @ManyToOne(targetEntity = Student.class)
     private Student student;
+
     @ManyToOne(targetEntity = Subject.class)
     private Subject subject;
 

@@ -1,17 +1,10 @@
-package com.sopregistration.databasediscoveryclient.model;
+package com.sopregistation.servicecrud.model;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "sectioncheck")
 public class SectionChecked {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(length = 30000)
     private Student student;
-    @Column(length = 30000)
     private Section section;
     private Timestamp dateTime;
     private Boolean status;

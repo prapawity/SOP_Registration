@@ -1,6 +1,5 @@
 package com.teacher.teacher.model;
 
-import sun.swing.SwingUtilities2;
 
 import java.util.List;
 
