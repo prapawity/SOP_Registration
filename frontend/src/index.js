@@ -12,6 +12,7 @@ import TeacherProfile from './views/Teacher/teacherProfile'
 import ScoreStudent from './views/Student/studentScore'
 import CheckStudent from './views/Student/studentCheck'
 import PredictStudent from './views/Student/studentPrediction'
+import TeacherScore from './views/Teacher/teacherScore'
 let browserHistory = createBrowserHistory()
 
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
 
         {/* Teacher */}
         <Route exact path="/teacher/profile" component={TeacherProfile}/> 
+        <Route exact path="/teacher/score" component={TeacherScore}/> 
         {/* Hongfah */}
         {/* <Route exact path="/" component={App}/>
         <Route path="/test2" component={Test}/>
