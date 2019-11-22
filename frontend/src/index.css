@@ -26,3 +26,8 @@ white
   background-color: transparent !important;
   box-shadow: none !important;
  }
+ .chartjs-render-monitor{
+   width: 100%;
+   height: 100%;
+ }
+ 

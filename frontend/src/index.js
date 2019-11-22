@@ -8,6 +8,10 @@ import firstPage from './views/FirstPage'
 import SignIn from './views/signIn'
 import Loaders from './component/loader';
 import StudentProfile from './views/Student/studentProfiel'
+import TeacherProfile from './views/Teacher/teacherProfile'
+import ScoreStudent from './views/Student/studentScore'
+import CheckStudent from './views/Student/studentCheck'
+import PredictStudent from './views/Student/studentPrediction'
 let browserHistory = createBrowserHistory()
 
 ReactDOM.render(
@@ -15,7 +19,15 @@ ReactDOM.render(
         <Loaders/>
         <Route exact path="/" component={firstPage}/>
         <Route exact path="/signin" component={SignIn}/>
+        {/* Student */}
         <Route exact path="/student/profile" component={StudentProfile}/>
+        <Route exact path="/student/score" component={ScoreStudent}/>
+        <Route exact path="/student/check" component={CheckStudent}/>
+        <Route exact path="/student/predict" component={PredictStudent}/>
+
+        {/* Teacher */}
+        <Route exact path="/teacher/profile" component={TeacherProfile}/> 
+        {/* Hongfah */}
         {/* <Route exact path="/" component={App}/>
         <Route path="/test2" component={Test}/>
         <Route path="/home" component={Navbar}/> */}

@@ -27,7 +27,7 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Score" />
+      <ListItemText primary="Subject" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

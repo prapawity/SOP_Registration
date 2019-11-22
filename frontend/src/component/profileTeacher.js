@@ -87,24 +87,6 @@ export default function Profile({props}) {
                                 <Grid item xs={12} md={3}>
                                     <Paper className={classes.paper3}>Patthasirivichot</Paper>
                                 </Grid>
-                                <Grid item xs={12} md={3}>
-                                    <Paper className={classes.paper2}>Student ID:</Paper>
-                                </Grid>
-                                <Grid item xs={12} md={3}>
-                                    <Paper className={classes.paper3}>60070045</Paper>
-                                </Grid>
-                                <Grid item xs={12} md={3}>
-                                    <Paper className={classes.paper2}>Sex:</Paper>
-                                </Grid>
-                                <Grid item xs={12} md={3}>
-                                    <Paper className={classes.paper3}>Male</Paper>
-                                </Grid>
-                                <Grid item xs={12} md={3}>
-                                    <Paper className={classes.paper2}>Faculty:</Paper>
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <Paper className={classes.paper3}>Information Technology</Paper>
-                                </Grid>
                                 
                     </Grid>
                 </CardContent>

@@ -26,11 +26,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import SendIcon from '@material-ui/icons/Send';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import Profile from '../../component/profileStudent'
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Pie from '../../component/Pie'
 
 const drawerWidth = 240;
 
@@ -113,6 +113,13 @@ const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+  con:{
+      textAlign: 'center'
+  }
 }));
 
 
@@ -150,13 +157,13 @@ const StyledMenuItem = withStyles(theme => ({
 }))(MenuItem);
 
 
-export default function Dashboard() {
+export default function Predict() {
 
 
 
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -172,10 +179,11 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 
-  const [person, setPerson] = useState('')
+  const [person, setPerson] = useState({})
 
+  const [listA,setA] = useState([1,2,3,4,5])
 
-  useEffect(async() => {
+  useEffect(() => {
     // execute Loader
     
     var delayInMilliseconds = 3000; //3 second
@@ -183,8 +191,7 @@ export default function Dashboard() {
     for(var i = 0; i < test.length; i++) { 
         test[i].style.display='none'
     }
-    await axios.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(res => {
-      setPerson(res['data']['name']);
+    axios.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(res => {
     setTimeout(function() {
     //your code to be executed after 2 second
         var eggs = document.getElementsByClassName('loader');
@@ -215,7 +222,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Profile
+            Predict
           </Typography>
         <Fab
             aria-controls="customized-menu"
@@ -231,22 +238,18 @@ export default function Dashboard() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link to='/student/profile'>
         <StyledMenuItem>
           <ListItemIcon>
             <SendIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </StyledMenuItem>
-        </Link>
-        <Link to='/'>
-          <StyledMenuItem>
-            <ListItemIcon>
-              <InboxIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="LogOut" />
-          </StyledMenuItem>
-        </Link>
+        <StyledMenuItem>
+          <ListItemIcon>
+            <InboxIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="LogOut" />
+        </StyledMenuItem>
       </StyledMenu>
         </Toolbar>
       </AppBar>
@@ -270,7 +273,24 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          {person != ""?<Profile props={person}/>:useEffect}
+        <div>
+            {
+                listA.map((value)=>{
+                    return <ExpansionPanel>
+                    <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <Typography className={classes.heading}>Expansion Panel 1</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <Pie/>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+                })
+            }
+        </div>
           <Box pt={4}>
             <Footer />
           </Box>

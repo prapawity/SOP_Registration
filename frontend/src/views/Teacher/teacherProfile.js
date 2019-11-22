@@ -16,7 +16,7 @@ import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from '../../component/sidenavStudent';
+import { mainListItems, secondaryListItems } from '../../component/sideNavTeacher';
 import Footer from '../../component/footer'
 import Fab from '@material-ui/core/Fab';
 import Avatar from '@material-ui/core/Avatar';
@@ -26,11 +26,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import SendIcon from '@material-ui/icons/Send';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import Profile from '../../component/profileStudent'
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import Profile from '../../component/profileTeacher'
 
 const drawerWidth = 240;
 
@@ -215,7 +211,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Profile
+            Dashboard
           </Typography>
         <Fab
             aria-controls="customized-menu"
@@ -231,22 +227,18 @@ export default function Dashboard() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link to='/student/profile'>
         <StyledMenuItem>
           <ListItemIcon>
             <SendIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </StyledMenuItem>
-        </Link>
-        <Link to='/'>
-          <StyledMenuItem>
-            <ListItemIcon>
-              <InboxIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="LogOut" />
-          </StyledMenuItem>
-        </Link>
+        <StyledMenuItem>
+          <ListItemIcon>
+            <InboxIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="LogOut" />
+        </StyledMenuItem>
       </StyledMenu>
         </Toolbar>
       </AppBar>
