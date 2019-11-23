@@ -2,6 +2,7 @@ package com.teacher.teacher;
 
 import com.teacher.teacher.model.*;
 import com.teacher.teacher.model.array.SectionCheckArray;
+import com.teacher.teacher.model.array.SectionList;
 import com.teacher.teacher.model.array.StudentList;
 import com.teacher.teacher.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class TeacherApplication {
         SpringApplication.run(TeacherApplication.class, args);
     }
 
+    //////////////////////////////////////////    Student    ///////////////////////////////////////////
     @RequestMapping(value = "/student/view/{id}", method = RequestMethod.GET)
     Student viewPersoninfo(@PathVariable int id){
         return viewStudentService.getStudent(id);
@@ -41,13 +43,35 @@ public class TeacherApplication {
     StudentList allStudent(){
         return viewStudentService.getAllStudent();
     }
+    //////////////////////////////////////////    Student    ///////////////////////////////////////////
 
+
+
+    //////////////////////////////////////////    Section    ///////////////////////////////////////////
+    @RequestMapping(value = "/sections", method = RequestMethod.GET)
+    SectionList getSection(){return viewSectionService.getAllSection();}
+
+    @RequestMapping(value = "/section/{id}", method = RequestMethod.GET)
+    Section getSectionByID(@PathVariable String id){return viewSectionService.getSectionByID(id);}
+    //////////////////////////////////////////    Section    ///////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////    Subject    ///////////////////////////////////////////
     @RequestMapping(value = "/subject/view/{id}", method = RequestMethod.GET)
     Subject viewSubjectdemo(@PathVariable int id){ return viewSubjectService.getSubject(id); }
+    //////////////////////////////////////////    Subject    ///////////////////////////////////////////
 
+
+
+    //////////////////////////////////////////    Score    ///////////////////////////////////////////
     @RequestMapping(value = "/score/{id}", method = RequestMethod.GET)
     Score viewScore(@PathVariable int id){ return viewScoreService.getScore(id); }
+    //////////////////////////////////////////    Score    ///////////////////////////////////////////
 
+
+
+    //////////////////////////////////////////    SectionCheck    ///////////////////////////////////////////
     @RequestMapping(value = "/sectionCheck/create", method = RequestMethod.POST)
     SectionCheckArray createSectionCheck(@RequestBody SectionCheckArray check){return sectionCheckService.createSection(check);}
 
@@ -62,4 +86,5 @@ public class TeacherApplication {
 
     @RequestMapping(value = "/sectionCheck/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSectionCheck(@PathVariable int id){return sectionCheckService.deleteSectionCheckByID(id);}
+    //////////////////////////////////////////    SectionCheck    ///////////////////////////////////////////
 }
