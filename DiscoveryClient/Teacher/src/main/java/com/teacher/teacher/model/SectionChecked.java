@@ -1,9 +1,6 @@
 package com.teacher.teacher.model;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 
 public class SectionChecked {
