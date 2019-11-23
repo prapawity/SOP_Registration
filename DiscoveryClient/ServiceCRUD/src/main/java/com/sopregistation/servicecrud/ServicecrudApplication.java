@@ -25,6 +25,8 @@ public class ServicecrudApplication {
     private SectionService sectionService;
     @Autowired
     private SubjectService subjectService;
+    @Autowired
+    private ScoreService scoresService;
 
 
     // define variable
@@ -58,6 +60,32 @@ public class ServicecrudApplication {
 
 
     //////////////////////////////////////// end Student ///////////////////////////////////////////
+
+
+
+    /////////////////////////////////// Scores //////////////////////////////////////
+
+    @RequestMapping(value = "/scores/create", method = RequestMethod.POST)
+    ScoresList createScores(@RequestBody ScoresList scores){ return scoresService.createScores(scores); }
+
+    @RequestMapping(value = "/scores", method = RequestMethod.GET)
+    ScoresList allScores(){
+        return scoresService.getAllScores();
+    }
+
+    @RequestMapping(value = "/scores/{id}", method = RequestMethod.GET)
+    Scores getScoresByID(@PathVariable int id){ return scoresService.getScoresByID(id); }
+
+    @RequestMapping(value = "/scores/update/{id}", method = RequestMethod.POST)
+    Scores updateScoresByID(@RequestBody Scores scores,@PathVariable int id){ return scoresService.updateScores(scores,id); }
+
+    @RequestMapping(value = "/scores/delete/{id}", method = RequestMethod.GET)
+    Boolean scoresDeleteByID(@PathVariable int id){
+        return scoresService.deleteScoresByID(id);
+    }
+
+
+    //////////////////////////////////////// end Scores ///////////////////////////////////////////
 
 
 

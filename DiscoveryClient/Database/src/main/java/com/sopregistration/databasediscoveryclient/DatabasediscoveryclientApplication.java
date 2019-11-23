@@ -34,6 +34,8 @@ public class DatabasediscoveryclientApplication {
     private SectionCheckService sectionCheckService;
     @Autowired
     DemographicService demographicService;
+    @Autowired
+    private ScoresService scoresService;
 
 
     public static void main(String[] args) {
@@ -79,39 +81,39 @@ public class DatabasediscoveryclientApplication {
 
     ////////////////////////////////////////////    Score            ////////////////////////////////////////////
 
-    @RequestMapping(value = "score/add", method = RequestMethod.POST)
-    ScoreArray addScore(@RequestBody ScoreArray scoreList){
-        List<Score> newscore = new ArrayList<Score>();
-        ScoreArray scoreList1;
+    @RequestMapping(value = "scores/add", method = RequestMethod.POST)
+    ScoresArray addScores(@RequestBody ScoresArray scoresList){
+        List<Scores> newscore = new ArrayList<Scores>();
+        ScoresArray scoreList1;
         newscore.clear();
         boolean chk;
-        for (Score s: scoreList.getScoreList()
+        for (Scores s: scoresList.getScoresList()
         ) {
-            chk = scoreService.createScore(s);
+            chk = scoresService.createScores(s);
             if(chk == false) {
-                scoreList1 = new ScoreArray(newscore);
+                scoreList1 = new ScoresArray(newscore);
                 return scoreList1;
             }
             else {
-                newscore.add(scoreService.getScoreByID(s.getId()));
+                newscore.add(scoresService.getScoresByID(s.getId()));
             }
 
         }
-        scoreList1 = new ScoreArray(newscore);
+        scoreList1 = new ScoresArray(newscore);
         return scoreList1;
     }
 
-    @RequestMapping(value = "score", method = RequestMethod.GET)
-    ScoreArray getAllScore(){ return scoreService.getAllScore(); }
+    @RequestMapping(value = "scores", method = RequestMethod.GET)
+    ScoresArray getAllScores(){ return scoresService.getAllScores(); }
 
-    @RequestMapping(value = "score/update/{id}", method = RequestMethod.POST)
-    Score updateScore(@RequestBody Score score,@PathVariable int id){ return scoreService.createScore(score) != false ? scoreService.getScoreByID(id) : null; }
+    @RequestMapping(value = "scores/update/{id}", method = RequestMethod.POST)
+    Scores updateScores(@RequestBody Scores scores,@PathVariable int id){ return scoresService.createScores(scores) != false ? scoresService.getScoresByID(id) : null; }
 
-    @RequestMapping(value = "score/{id}", method = RequestMethod.GET)
-    Score getScoreByID(@PathVariable int id){ return scoreService.getScoreByID(id); }
+    @RequestMapping(value = "scores/{id}", method = RequestMethod.GET)
+    Scores getScoresByID(@PathVariable int id){ return scoresService.getScoresByID(id); }
 
-    @RequestMapping(value = "score/delete/{id}", method = RequestMethod.GET)
-    Boolean deleteScoreID(@PathVariable int id){ return scoreService.deleteScore(id); }
+    @RequestMapping(value = "scores/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteScoresID(@PathVariable int id){ return scoresService.deleteScores(id); }
 
 
 
