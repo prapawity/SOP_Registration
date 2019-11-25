@@ -1,6 +1,7 @@
 package com.teacher.teacher.service;
 
 import com.teacher.teacher.model.Subject;
+import com.teacher.teacher.model.array.SubjectList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -21,6 +22,14 @@ public class ViewSubjectService {
         List<ServiceInstance> instances = discoveryClient.getInstances("servicecrud");
         String serviceUri = String.format("%s/subject/%d" ,instances.get(0).getUri().toString(), id);
         ResponseEntity< Subject > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, Subject.class, id);
+        return restExchange.getBody();
+    }
+
+    public SubjectList getAllSubject() {
+        RestTemplate restTemplate = new RestTemplate();
+        List<ServiceInstance> instances = discoveryClient.getInstances("servicecrud");
+        String serviceUri = String.format("%s/subject" ,instances.get(0).getUri().toString());
+        ResponseEntity< SubjectList > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, SubjectList.class);
         return restExchange.getBody();
     }
 }

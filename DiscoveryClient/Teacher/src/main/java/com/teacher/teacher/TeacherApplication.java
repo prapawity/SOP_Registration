@@ -4,6 +4,7 @@ import com.teacher.teacher.model.*;
 import com.teacher.teacher.model.array.SectionCheckArray;
 import com.teacher.teacher.model.array.SectionList;
 import com.teacher.teacher.model.array.StudentList;
+import com.teacher.teacher.model.array.SubjectList;
 import com.teacher.teacher.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -60,6 +61,8 @@ public class TeacherApplication {
     //////////////////////////////////////////    Subject    ///////////////////////////////////////////
     @RequestMapping(value = "/subject/view/{id}", method = RequestMethod.GET)
     Subject viewSubjectdemo(@PathVariable int id){ return viewSubjectService.getSubject(id); }
+    @RequestMapping(value = "/subject", method = RequestMethod.GET)
+    SubjectList getAllSubject(){return viewSubjectService.getAllSubject();}
     //////////////////////////////////////////    Subject    ///////////////////////////////////////////
 
 
