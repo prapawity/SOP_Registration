@@ -9,7 +9,9 @@ public class SectionChecked {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(length = 30000)
     private Student student;
+    @Column(length = 30000)
     private Section section;
     private Timestamp dateTime;
     private Boolean status;
