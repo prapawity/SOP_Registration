@@ -51,7 +51,7 @@ services:
     restart: always
   studentservice:
     build:
-      context: DiscoveryClient/Student
+      context: DiscoveryClient/Students
       dockerfile: Dockerfile
     ports:
       - "8004:8004"
