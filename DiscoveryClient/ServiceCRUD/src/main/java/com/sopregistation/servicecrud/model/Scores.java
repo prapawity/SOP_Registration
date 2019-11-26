@@ -1,17 +1,15 @@
-package com.sopreg.student.model;
+package com.sopregistation.servicecrud.model;
 
-import java.util.List;
-
-public class Score {
+public class Scores {
     private int id;
     private Student student;
     private Subject subject;
     private double points;
     private int scoreslot;
 
-    public Score(){}
+    public Scores(){}
 
-    public Score(Student student, Subject subject, double points, int scoreslot) {
+    public Scores(Student student, Subject subject, double points, int scoreslot) {
         this.student = student;
         this.subject = subject;
         this.points = points;
