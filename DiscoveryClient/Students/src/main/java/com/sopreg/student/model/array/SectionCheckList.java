@@ -1,23 +1,23 @@
 package com.sopreg.student.model.array;
 
-import com.sopreg.student.model.SectionCheck;
+import com.sopreg.student.model.SectionChecked;
 
 import java.util.List;
 
 public class SectionCheckList {
-    private List<SectionCheck> checkedList;
+    private List<SectionChecked> checkedList;
 
-    public SectionCheckList(List<SectionCheck> checkedList) {
+    public SectionCheckList(List<SectionChecked> checkedList) {
         this.checkedList = checkedList;
     }
 
     public SectionCheckList() {}
 
-    public List<SectionCheck> getCheckedList() {
+    public List<SectionChecked> getCheckedList() {
         return checkedList;
     }
 
-    public void setCheckedList(List<SectionCheck> checkedList) {
+    public void setCheckedList(List<SectionChecked> checkedList) {
         this.checkedList = checkedList;
     }
 }
