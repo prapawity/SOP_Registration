@@ -1,0 +1,51 @@
+version: '3.7'
+
+# Define services
+services:
+  # App backend service
+  database:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: DiscoveryClient/Database # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+  discoveryserver:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: DiscoveryServers # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+
+  servicegateway:
+    build:
+      context: ServiceGateway
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    restart: always
+
+  hongfahservice:
+    build:
+      context: DiscoveryClient/hongfah
+      dockerfile: Dockerfile
+    ports:
+      - "8009:8009"
+    restart: always
+  servicecrud:
+    build:
+      context: DiscoveryClient/ServiceCRUD
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    restart: always
+  teacherservice:
+    build:
+      context: DiscoveryClient/Teacher
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    restart: always

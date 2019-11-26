@@ -26,7 +26,7 @@ public class StudentService {
     public Student updateStudent(Student student,int id){
         RestTemplate restTemplate = new RestTemplate();
         List<ServiceInstance> instances = discoveryClient.getInstances("database");
-        String serviceUri = String.format("%s/user/hongfah/update/%s" ,instances.get(0).getUri().toString());
+        String serviceUri = String.format("%s/user/student/update/%d" ,instances.get(0).getUri().toString(),id);
         Student restExchange = restTemplate.postForObject( serviceUri, student, Student.class,id);
         return restExchange;
     }

@@ -7,7 +7,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discoveryserver:8761/eureka/
 zuul:
   ignored-services: '*'
   routes:
@@ -15,3 +15,15 @@ zuul:
       serviceId: database
     database: /database/**
     servicecrud: /servicecrud/**
+    teacher-service: /teacher-service/**
+    servicehongfah: /servicehongfah/**
+    servicestudent: /servicestudent/**
+
+
+security:
+  oauth2:
+    client:
+      client-id: clientId
+      client-secret: clientSecret
+      authorized-grant-types: authorization_code, refresh_token, password
+      scope: openid

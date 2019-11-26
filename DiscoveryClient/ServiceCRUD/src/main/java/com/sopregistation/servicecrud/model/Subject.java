@@ -7,12 +7,14 @@ public class Subject{
     private String id;
     private List<Teacher> teacherList;
     private List<Section> sectionList;
+    private Demographic demographic;
 
     // constructor
-    public Subject(String id, List<Teacher> teacherList, List<Section> sectionList) {
+    public Subject(String id, List<Teacher> teacherList, List<Section> sectionList, Demographic demographic) {
         this.id = id;
         this.teacherList = teacherList;
         this.sectionList = sectionList;
+        this.demographic = demographic;
     }
 
     public Subject(){}
@@ -41,5 +43,13 @@ public class Subject{
 
     public void setSectionList(List<Section> sectionList) {
         this.sectionList = sectionList;
+    }
+
+    public Demographic getDemographic() {
+        return demographic;
+    }
+
+    public void setDemographic(Demographic demographic) {
+        this.demographic = demographic;
     }
 }
