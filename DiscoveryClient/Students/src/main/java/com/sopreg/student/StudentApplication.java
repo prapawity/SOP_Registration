@@ -3,6 +3,10 @@ package com.sopreg.student;
 import com.sopreg.student.model.*;
 import com.sopreg.student.model.array.*;
 import com.sopreg.student.service.*;
+import com.sopreg.student.model.Student;
+import com.sopreg.student.model.Subject;
+import com.sopreg.student.service.ViewStudentService;
+import com.sopreg.student.service.ViewSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -50,4 +54,12 @@ public class StudentApplication {
 
     @RequestMapping(value = "/points/create", method = RequestMethod.POST)
     PointList createPoint(@RequestBody PointList points){return addScoreService.createPoint(points);}
+    @RequestMapping(value = "/student/view", method = RequestMethod.GET)
+    Student viewPersoninfo(@PathVariable int id){ return viewStudentService.getStudent(id); }
+
+    @RequestMapping(value = "/subject/view", method = RequestMethod.GET)
+    Subject viewSubjectdemo(@PathVariable int id){ return viewSubjectService.getSubject; }
+
+    @RequestMapping(value = "/score/{id}", method = RequestMethod.GET)
+    Subject viewScore(@PathVariable String id){ return null; }
 }

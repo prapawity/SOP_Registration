@@ -1,13 +1,13 @@
 spring:
   application:
-    name: servicehongfah
+    name: teacher-service
   profiles:
     active: default
   cloud:
     config:
       enabled: true
 server:
-  port: 8009
+  port: 8003
 eureka:
   instance:
     preferIpAddress: true

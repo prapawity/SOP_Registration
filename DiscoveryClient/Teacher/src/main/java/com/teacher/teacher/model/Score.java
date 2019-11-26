@@ -1,45 +1,19 @@
-package com.sopregistration.databasediscoveryclient.model;
+package com.teacher.teacher.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
-
-@Entity
-@Table(name = "score")
-public class Score implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Score {
     private int id;
-
-    @ManyToOne(targetEntity = Student.class)
     private Student student;
-
-    @ManyToOne(targetEntity = Subject.class)
     private Subject subject;
-
-    @Column(name = "point")
-    @OneToMany(targetEntity = PointsTable.class,mappedBy = "score", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PointsTable> pointsTable;
 
-
-//    Constructor
-    public Score(){
-
-    }
-
-    public Score(Student student, Subject subject, Set<PointsTable> pointsTable) {
-        this.student = student;
-        this.subject = subject;
-        this.pointsTable = pointsTable;
-    }
+    public Score(){}
 
     public Score(Student student, Subject subject) {
         this.student = student;
         this.subject = subject;
     }
-    //    Getter Setter
-
 
     public int getId() {
         return id;

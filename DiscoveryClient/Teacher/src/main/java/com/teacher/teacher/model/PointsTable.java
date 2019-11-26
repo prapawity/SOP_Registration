@@ -1,16 +1,16 @@
-package com.sopreg.student.model;
+package com.teacher.teacher.model;
 
-import java.util.List;
 import java.util.Set;
+
 public class PointsTable {
     private int id;
-    private List<Score> score;
+    private Set<Score> score;
     private double points;
     private String describtion;
 
     public PointsTable(){}
 
-    public PointsTable(List<Score> score, double points, String describtion) {
+    public PointsTable(Set<Score> score, double points, String describtion) {
         this.score = score;
         this.points = points;
         this.describtion = describtion;
@@ -24,13 +24,11 @@ public class PointsTable {
         this.id = id;
     }
 
-
-    public List<Score> getScore() {
+    public Set<Score> getScore() {
         return score;
     }
 
-    public void setScore(List<Score> score) {
-
+    public void setScore(Set<Score> score) {
         this.score = score;
     }
 
