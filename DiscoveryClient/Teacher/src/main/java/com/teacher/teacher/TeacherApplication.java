@@ -1,10 +1,7 @@
 package com.teacher.teacher;
 
 import com.teacher.teacher.model.*;
-import com.teacher.teacher.model.array.SectionCheckArray;
-import com.teacher.teacher.model.array.SectionList;
-import com.teacher.teacher.model.array.StudentList;
-import com.teacher.teacher.model.array.SubjectList;
+import com.teacher.teacher.model.array.*;
 import com.teacher.teacher.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TeacherApplication {
     @Autowired
-    private ViewScoreService viewScoreService;
+    private ScoreService viewScoreService;
     @Autowired
     private ViewSectionService viewSectionService;
     @Autowired
@@ -68,8 +65,24 @@ public class TeacherApplication {
 
 
     //////////////////////////////////////////    Score    ///////////////////////////////////////////
-    @RequestMapping(value = "/score/{id}", method = RequestMethod.GET)
-    Score viewScore(@PathVariable int id){ return viewScoreService.getScore(id); }
+    @RequestMapping(value = "/scores/create", method = RequestMethod.POST)
+    ScoresList createScores(@RequestBody ScoresList scores){ return viewScoreService.createScores(scores); }
+
+    @RequestMapping(value = "/scores", method = RequestMethod.GET)
+    ScoresList allScores(){
+        return viewScoreService.getAllScores();
+    }
+
+    @RequestMapping(value = "/scores/{id}", method = RequestMethod.GET)
+    Scores getScoresByID(@PathVariable int id){ return viewScoreService.getScoresByID(id); }
+
+    @RequestMapping(value = "/scores/update/{id}", method = RequestMethod.POST)
+    Scores updateScoresByID(@RequestBody Scores scores,@PathVariable int id){ return viewScoreService.updateScores(scores,id); }
+
+    @RequestMapping(value = "/scores/delete/{id}", method = RequestMethod.GET)
+    Boolean scoresDeleteByID(@PathVariable int id){
+        return viewScoreService.deleteScoresByID(id);
+    }
     //////////////////////////////////////////    Score    ///////////////////////////////////////////
 
 

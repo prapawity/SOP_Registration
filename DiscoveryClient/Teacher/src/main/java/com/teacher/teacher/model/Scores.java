@@ -1,18 +1,19 @@
 package com.teacher.teacher.model;
 
-import java.util.Set;
-
-public class Score {
+public class Scores {
     private int id;
     private Student student;
     private Subject subject;
-    private Set<PointsTable> pointsTable;
+    private double points;
+    private int scoreslot;
 
-    public Score(){}
+    public Scores(){}
 
-    public Score(Student student, Subject subject) {
+    public Scores(Student student, Subject subject, double points, int scoreslot) {
         this.student = student;
         this.subject = subject;
+        this.points = points;
+        this.scoreslot = scoreslot;
     }
 
     public int getId() {
@@ -39,11 +40,18 @@ public class Score {
         this.subject = subject;
     }
 
-    public Set<PointsTable> getPointsTable() {
-        return pointsTable;
+    public double getPoints() {
+        return points;
     }
 
-    public void setPointsTable(Set<PointsTable> pointsTable) {
-        this.pointsTable = pointsTable;
+    public void setPoints(double points) {
+        this.points = points;
+    }
+
+    public int getScoreslot() { return scoreslot; }
+
+    public void setScoreslot(int scoreslot) {
+        this.scoreslot = scoreslot;
     }
 }
+
