@@ -49,3 +49,10 @@ services:
     ports:
       - "8003:8003"
     restart: always
+  studentservice:
+    build:
+      context: DiscoveryClient/Student
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8004"
+    restart: always
