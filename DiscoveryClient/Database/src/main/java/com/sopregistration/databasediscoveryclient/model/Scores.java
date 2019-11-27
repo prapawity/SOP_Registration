@@ -1,10 +1,11 @@
 package com.sopregistration.databasediscoveryclient.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "scores")
-public class Scores {
+public class Scores implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

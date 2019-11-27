@@ -1,5 +1,5 @@
 package com.sopregistation.servicecrud.model;
-
+import com.sopregistation.servicecrud.model.Subject;
 public class Scores {
     private int id;
     private Student student;

@@ -1,8 +1,5 @@
 package com.sopregistation.servicecrud.model;
-
-
 import java.util.List;
-
 public class Subject{
     private String id;
     private List<Teacher> teacherList;

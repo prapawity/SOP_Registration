@@ -2,8 +2,6 @@ package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.DemographicRepository;
 import com.sopregistration.databasediscoveryclient.model.Demographic;
-import com.sopregistration.databasediscoveryclient.model.PointsTable;
-import com.sopregistration.databasediscoveryclient.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

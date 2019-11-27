@@ -27,8 +27,6 @@ public class DatabasediscoveryclientApplication {
     @Autowired
     private SectionService sectionService;
     @Autowired
-    private ScoreService scoreService;
-    @Autowired
     private SubjectService subjectService;
     @Autowired
     private SectionCheckService sectionCheckService;

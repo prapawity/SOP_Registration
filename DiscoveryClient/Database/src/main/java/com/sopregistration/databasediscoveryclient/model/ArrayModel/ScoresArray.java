@@ -1,7 +1,5 @@
 package com.sopregistration.databasediscoveryclient.model.ArrayModel;
-
 import com.sopregistration.databasediscoveryclient.model.Scores;
-
 import java.util.List;
 
 public class ScoresArray {

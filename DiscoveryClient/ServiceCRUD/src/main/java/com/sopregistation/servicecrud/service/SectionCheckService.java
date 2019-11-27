@@ -46,7 +46,7 @@ public class SectionCheckService {
         RestTemplate restTemplate = new RestTemplate();
         List<ServiceInstance> instances = discoveryClient.getInstances("database");
         String serviceUri = String.format("%s/sectionCheck/%d" ,instances.get(0).getUri().toString(), id);
-        ResponseEntity<SectionChecked> restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, SectionChecked.class, id);
+        ResponseEntity< SectionChecked > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, SectionChecked.class, id);
         return restExchange.getBody();
     }
 

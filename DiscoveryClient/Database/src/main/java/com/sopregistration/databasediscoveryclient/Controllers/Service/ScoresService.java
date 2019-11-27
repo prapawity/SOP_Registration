@@ -1,13 +1,15 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.ScoresRepository;
-import com.sopregistration.databasediscoveryclient.model.ArrayModel.ScoresArray;
 import com.sopregistration.databasediscoveryclient.model.Scores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.sopregistration.databasediscoveryclient.model.ArrayModel.ScoresArray;
+
 
 @Service
 public class ScoresService {
+
     @Autowired
     private ScoresRepository scoresRepository;
 
