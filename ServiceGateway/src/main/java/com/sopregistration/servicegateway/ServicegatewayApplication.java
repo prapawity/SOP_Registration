@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-
+@CrossOrigin(origins = "", allowedHeaders = "")
 public class ServicegatewayApplication {
 
     public static void main(String[] args) {

@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../component/footer'
-
+import axios from 'axios'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -60,11 +60,27 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  function CallApi(){
+        
+  }
   useEffect(() => {
     // execute Loader
     var delayInMilliseconds = 3000; //3 second
     setTimeout(function() {
     //your code to be executed after 2 second
+    axios.post('http://35.198.250.42:80/oauth/token', { 
+      headers: {
+      accept: 'application/json',
+      'accept-language': 'en_US',
+      'content-type': 'application/x-www-form-urlencoded'
+  }, auth: {
+      username: "prapawity",
+      password: "admin1234"
+  }, body: {
+      password: "admin",
+      username: "prapawity",
+      grant_type: 'password',
+  } })
         var eggs = document.getElementsByClassName('loader');
         for(var i = 0; i < eggs.length; i++) { 
             eggs[i].style.display='none'
@@ -119,6 +135,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={CallApi}
             >
               Sign In
             </Button>

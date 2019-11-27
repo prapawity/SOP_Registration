@@ -183,8 +183,12 @@ export default function Dashboard() {
     for(var i = 0; i < test.length; i++) { 
         test[i].style.display='none'
     }
-    await axios.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(res => {
-      setPerson(res['data']['name']);
+    await axios.get('http://35.198.250.42:80/servicestudent/student/view/60010047',{
+      headers:{
+        Authorization: '5d995a1f-1ae7-4b9a-9852-ccdce65dbfda'
+      }
+    }).then(res => {
+      console.log(res)
     setTimeout(function() {
     //your code to be executed after 2 second
         var eggs = document.getElementsByClassName('loader');

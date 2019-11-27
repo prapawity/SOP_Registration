@@ -32,7 +32,7 @@ public class SubjectService {
         return restExchange.getBody();
     }
 
-    public Subject getSubjectByID(String id) {
+    public Subject getSubjectByID(int id) {
         RestTemplate restTemplate = new RestTemplate();
         List<ServiceInstance> instances = discoveryClient.getInstances("database");
         String serviceUri = String.format("%s/subject/%s" ,instances.get(0).getUri().toString(), id);

@@ -165,7 +165,7 @@ public class ServicecrudApplication {
     SubjectList getAllSubject(){return subjectService.getAllSubject();}
 
     @RequestMapping(value = "/subject/{id}", method = RequestMethod.GET)
-    Subject getSubjectByID(@PathVariable String id){return subjectService.getSubjectByID(id);}
+    Subject getSubjectByID(@PathVariable int id){return subjectService.getSubjectByID(id);}
 
     @RequestMapping(value = "/subject/update/{id}", method = RequestMethod.POST)
     Subject updateSubjectByid(@RequestBody Subject s, @PathVariable String id){return subjectService.updateSubject(s,id);}
