@@ -157,7 +157,9 @@ public class ServicecrudApplication {
     //////////////////////////////////////////    Subject    ///////////////////////////////////////////
 
     @RequestMapping(value = "/subject/create", method = RequestMethod.POST)
-    Subject createTeacher(@RequestBody Subject subject){return subjectService.createSubject(subject);}
+    Subject createTeacher(@RequestBody Subject subject){
+        return subjectService.createSubject(subject);
+    }
 
     @RequestMapping(value = "/subject", method = RequestMethod.GET)
     SubjectList getAllSubject(){return subjectService.getAllSubject();}

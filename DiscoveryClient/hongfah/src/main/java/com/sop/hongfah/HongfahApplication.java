@@ -51,6 +51,11 @@ public class HongfahApplication {
         return subjectService.updateSubject(subject,id);
     }
 
+    @RequestMapping(value = "/subject/delete/{id}", method = RequestMethod.GET)
+    Boolean deleteSubjectByID(@PathVariable String id){
+        return subjectService.deleteSubjectByID(id);
+    }
+
     //######################## CRUD Teacher ############################//
 
     @RequestMapping(value = "/teacher/create", method = RequestMethod.POST)
