@@ -1,14 +1,8 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.DemographicRepository;
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.ScoresRepository;
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionRepository;
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.SubjectRepository;
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.*;
+import com.sopregistration.databasediscoveryclient.model.*;
 import com.sopregistration.databasediscoveryclient.model.ArrayModel.SubjectArray;
-import com.sopregistration.databasediscoveryclient.model.Demographic;
-import com.sopregistration.databasediscoveryclient.model.Scores;
-import com.sopregistration.databasediscoveryclient.model.Section;
-import com.sopregistration.databasediscoveryclient.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +19,8 @@ public class SubjectService {
     private ScoresRepository scoresRepository;
     @Autowired
     private SectionRepository sectionRepository;
+    @Autowired
+    private Subject_TeacherRepository subject_teacherRepository;
 
     public Boolean createSubject(Subject subject){
         boolean demoSaved;
@@ -39,6 +35,10 @@ public class SubjectService {
         for (Section sec:subject.getSectionList()
              ) {
             sectionRepository.save(sec);
+        }
+        for (Subject_Teacher sj:subject.getTeacherList()
+             ) {
+            subject_teacherRepository.save(sj);
         }
         if (demoSaved) {
             subject.demographic = demoTemp;

@@ -1,0 +1,34 @@
+package com.sopregistration.databasediscoveryclient.model;
+
+import javax.persistence.*;
+import java.io.Serializable;
+@Entity
+@Table(name = "subject")
+public class Subject_Teacher implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "teacher")
+    private Teacher teacher;
+
+    public Subject_Teacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+    public Subject_Teacher(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+}

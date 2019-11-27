@@ -1,14 +1,8 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionCheckRepository;
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionRepository;
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.StudentRepository;
-import com.sopregistration.databasediscoveryclient.Controllers.Repository.SubjectRepository;
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.*;
+import com.sopregistration.databasediscoveryclient.model.*;
 import com.sopregistration.databasediscoveryclient.model.ArrayModel.StudentArray;
-import com.sopregistration.databasediscoveryclient.model.Section;
-import com.sopregistration.databasediscoveryclient.model.SectionChecked;
-import com.sopregistration.databasediscoveryclient.model.Student;
-import com.sopregistration.databasediscoveryclient.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +20,8 @@ public class StudentService {
     private SectionCheckRepository sectionCheckRepository;
     @Autowired
     private SectionRepository sectionRepository;
+    @Autowired
+    private ScoresRepository scoresRepository;
 
     public Boolean createStudent(Student student){
         Student saved = studentRepository.save(student);
@@ -71,6 +67,14 @@ public class StudentService {
             if(s.getStudent().getId()==id)delete=s.getId();
         }
         if(delete != 10000000)sectionCheckRepository.deleteById(delete);
+        List<Scores> chk2 = new ArrayList<>();
+        for (Scores sc:scoresRepository.findAll()
+             ) {
+            if(sc.getStudent().getId()==id)chk2.add(sc);
+        }
+        for (Scores sc: chk2){
+            scoresRepository.delete(sc);
+        }
         try {
             studentRepository.deleteById(id);
             return true;

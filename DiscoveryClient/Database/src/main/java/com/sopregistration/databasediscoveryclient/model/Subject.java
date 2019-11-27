@@ -11,8 +11,8 @@ public class Subject implements Serializable {
     public int id;
 
     @Column(name = "teacherList")
-    @ElementCollection(targetClass=Teacher.class)
-    public List<Teacher> teacherList;
+    @ElementCollection(targetClass=Subject_Teacher.class)
+    public List<Subject_Teacher> teacherList;
 
     @Column(name = "sectionList")
     @ElementCollection(targetClass=Section.class)
@@ -26,15 +26,13 @@ public class Subject implements Serializable {
 
     }
 
-    public Subject(int id, List<Teacher> teacherList, List<Section> sectionList, Demographic demographic) {
+    public Subject(int id, List<Subject_Teacher> teacherList, List<Section> sectionList, Demographic demographic) {
         this.id = id;
         this.teacherList = teacherList;
         this.sectionList = sectionList;
         this.demographic = demographic;
     }
-
     //getter setter
-
 
     public int getId() {
         return id;
@@ -44,11 +42,11 @@ public class Subject implements Serializable {
         this.id = id;
     }
 
-    public List<Teacher> getTeacherList() {
+    public List<Subject_Teacher> getTeacherList() {
         return teacherList;
     }
 
-    public void setTeacherList(List<Teacher> teacherList) {
+    public void setTeacherList(List<Subject_Teacher> teacherList) {
         this.teacherList = teacherList;
     }
 
