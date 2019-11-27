@@ -9,6 +9,10 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import {
+  BrowserRouter as Router,
+  Link
+} from "react-router-dom";
 
 export const mainListItems = (
   <div>
@@ -23,18 +27,22 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Score" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Section Check" />
-    </ListItem>
+    <Link to="/student/score">
+      <ListItem button>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="Score" />
+      </ListItem>
+    </Link>
+    <Link to="/student/check">
+      <ListItem button>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="Section Check" />
+      </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
