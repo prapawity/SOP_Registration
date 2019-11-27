@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @EnableZuulProxy
 @CrossOrigin(origins = "", allowedHeaders = "")
 public class ServicegatewayApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ServicegatewayApplication.class, args);
     }

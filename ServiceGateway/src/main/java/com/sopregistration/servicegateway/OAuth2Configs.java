@@ -10,9 +10,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @EnableAuthorizationServer
 @Configuration
+@CrossOrigin(origins = "", allowedHeaders = "")
 public class OAuth2Configs extends AuthorizationServerConfigurerAdapter {
 
     @Autowired

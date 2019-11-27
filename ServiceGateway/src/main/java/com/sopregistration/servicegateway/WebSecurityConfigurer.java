@@ -7,9 +7,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @EnableResourceServer
 @Configuration
+@CrossOrigin(origins = "", allowedHeaders = "")
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
