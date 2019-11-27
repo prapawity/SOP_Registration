@@ -1,6 +1,7 @@
 package com.sopregistration.databasediscoveryclient.Controllers.Service;
 
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionCheckRepository;
+import com.sopregistration.databasediscoveryclient.Controllers.Repository.SectionRepository;
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.StudentRepository;
 import com.sopregistration.databasediscoveryclient.Controllers.Repository.SubjectRepository;
 import com.sopregistration.databasediscoveryclient.model.ArrayModel.StudentArray;
@@ -23,6 +24,8 @@ public class StudentService {
     private SubjectRepository subjectRepository;
     @Autowired
     private SectionCheckRepository sectionCheckRepository;
+    @Autowired
+    private SectionRepository sectionRepository;
 
     public Boolean createStudent(Student student){
         Student saved = studentRepository.save(student);
@@ -53,17 +56,21 @@ public class StudentService {
                         if(student.getId() != id)list.add(student);
                     }
                     sec.setStudentList(list);
-
                 }
                 list1.add(sec);
+            }
+            for(Section test: list1){
+                sectionRepository.save(test);
             }
             s.setSectionList(list1);
             subjectRepository.save(s);
         }
+        int delete = 10000000;
         for (SectionChecked s:sectionCheckRepository.findAll()
              ) {
-            if(s.getStudent().getId()==id)sectionCheckRepository.delete(s);
+            if(s.getStudent().getId()==id)delete=s.getId();
         }
+        if(delete != 10000000)sectionCheckRepository.deleteById(delete);
         try {
             studentRepository.deleteById(id);
             return true;
