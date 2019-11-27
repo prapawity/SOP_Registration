@@ -1,11 +1,12 @@
 package com.sopregistration.databasediscoveryclient.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "sectioncheck")
-public class SectionChecked {
+public class SectionChecked implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
