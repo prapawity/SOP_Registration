@@ -19,16 +19,16 @@ public class ViewScoreService {
 
     public Score getScoreByID(int id) {
         RestTemplate restTemplate = new RestTemplate();
-        List<ServiceInstance> instances = discoveryClient.getInstances("database");
-        String serviceUri = String.format("%s/score/%d" ,instances.get(0).getUri().toString(), id);
+        List<ServiceInstance> instances = discoveryClient.getInstances("servicecrud");
+        String serviceUri = String.format("%s/scores/%d" ,instances.get(0).getUri().toString(), id);
         ResponseEntity< Score > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, Score.class, id);
         return restExchange.getBody();
     }
 
     public ScoreList getAllScore() {
         RestTemplate restTemplate = new RestTemplate();
-        List<ServiceInstance> instances = discoveryClient.getInstances("database");
-        String serviceUri = String.format("%s/score" ,instances.get(0).getUri().toString());
+        List<ServiceInstance> instances = discoveryClient.getInstances("servicecrud");
+        String serviceUri = String.format("%s/scores" ,instances.get(0).getUri().toString());
         ResponseEntity< ScoreList > restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, ScoreList.class);
         return restExchange.getBody();
     }

@@ -18,8 +18,8 @@ public class AttendClassService {
 
     public SectionCheckList getAllCheckstatusByID(int id){
         RestTemplate restTemplate = new RestTemplate();
-        List<ServiceInstance> instances = discoveryClient.getInstances("database");
-        String serviceUri = String.format("%s/sectioncheck/%d" ,instances.get(0).getUri().toString(), id);
+        List<ServiceInstance> instances = discoveryClient.getInstances("servicecrud");
+        String serviceUri = String.format("%s/sectionCheck/%d" ,instances.get(0).getUri().toString(), id);
         ResponseEntity<SectionCheckList> restExchange = restTemplate.exchange( serviceUri, HttpMethod.GET, null, SectionCheckList.class, id);
         return restExchange.getBody();
     }

@@ -29,7 +29,7 @@ public class SectionCheckService {
     public SectionChecked updateSectionCheck(SectionChecked section,int id){
         RestTemplate restTemplate = new RestTemplate();
         List<ServiceInstance> instances = discoveryClient.getInstances("database");
-        String serviceUri = String.format("%s/sectioncheck/update/{id}" ,instances.get(0).getUri().toString());
+        String serviceUri = String.format("%s/sectioncheck/update/{id}" ,instances.get(0).getUri().toString(), id);
         SectionChecked restExchange = restTemplate.postForObject( serviceUri, section, SectionChecked.class,id);
         return restExchange;
     }
