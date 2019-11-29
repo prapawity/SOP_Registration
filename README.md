@@ -44,6 +44,31 @@ http://35.198.250.42:80/teacher-service
 ```
 
 ```
+# Hongfah Service
+http://35.198.250.42:80/servicehongfah
+```
+ Teacher (CRUD)
+ POST /subject/create   สร้าง Subject
+ GET  /subject          ดู Subject ทั้งหมด
+ GET  /subject/{id}     ดู Subject ตาม Id
+ POST /subject/update/{id} แก้ไข Subject ตาม Id
+ GET  /subject/delete/{id} ลบ Subject ตาม Id
+ _________________________________________________
+ Student (CRUD)
+ POST /teacher/create   สร้าง Subject
+ GET  /teacher          ดู Subject ทั้งหมด
+ GET  /teacher/{id}     ดู Subject ตาม Id
+ POST /teacher/update/{id} แก้ไข Subject ตาม Id
+ GET  /teacher/delete/{id} ลบ Subject ตาม Id
+ _________________________________________________
+ Subject (CRUD)
+ POST /student/create   สร้าง Subject
+ GET  /student          ดู Subject ทั้งหมด
+ GET  /student/{id}     ดู Subject ตาม Id
+ POST /student/update/{id} แก้ไข Subject ตาม Id
+ GET  /student/delete/{id} ลบ Subject ตาม Id
+ __________________________________________________
+```
 # Tools
 <table border="0">
 <tr >
