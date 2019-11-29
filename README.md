@@ -39,11 +39,30 @@ http://35.198.250.42:80/teacher-service
 /subject
 /subject/view/{id}
 ```
-
 ## Score (CRUD คะแนน)
 ```
 
+# Student Service
 ```
+http://35.198.250.42:80/servicestudent
+```
+## Student  (ดู Student)
+```
+/student/view/{id}
+```
+## SectionCheck Status (ดูสถานะการเข้าเรียน)
+```
+/sectioncheck/{id}
+```
+## Subject  (ดู Subject&section)
+```
+/subject/view
+```
+## Score (ดู Student's score)
+```
+/score/view/{id}
+```
+
 # Hongfah Service
 http://35.198.250.42:80/servicehongfah
 ```
