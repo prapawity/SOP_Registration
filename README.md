@@ -40,7 +40,7 @@ http://35.198.250.42:80/teacher-service
 /subject/view/{id}
 ```
 ## Score (CRUD คะแนน)
-```
+
 
 # Student Service
 ```
