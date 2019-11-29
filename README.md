@@ -1,36 +1,30 @@
 # SOP_Registration
 Project of `Service-oriented Programming`
     ระบบทะเบียน ที่นักศึกษาและอาจารย์ผู้สอนสามารถตรวจสอบและเข้าถึงข้อมูลต่างๆ เช่น ข้อมูลอัตราการเข้าชั้นเรียนของนศ. หรือ ข้อมูลตารางสอน ข้อมูลจำนวนนศ. โดยสามารถนำข้อมูลเหล่านี้มาแสดงผลเป็น chart และ สามารถคาดเดา behaviorได้
-# Teacher Service
+# Server
 ```
-port : 8003
+http://35.198.250.42:80
 ```
-## Section Checker (เช็คชื่อ)
+## Student Service
 ```
-/sectionCheck/create
-/sectionCheck
-/sectionCheck/{id}
-/sectionCheck/update/{id}
-/sectionCheck/delete/{id}
+http://35.198.250.42:80/servicestudent
 ```
-## Student  (ดูรายชื่อนักเรียน)
+## Student  (View student info)
 ```
 /student/view/{id}
-/student
 ```
-## Section  (ดู Section)
+## SectionCheck Status (see Class Attendance)
 ```
-/sections
-/section/{id}
+/sectioncheck/{id}
 ```
-## Subject  (ดู Subject)
+## Subject  (see Subject&section)
 ```
-/subject
-/subject/view/{id}
+/subject/view
 ```
 
-## Score (CRUD คะแนน)
+## Score (See student's score)
 ```
+/score/view/{id}
 ```
 # Tools
 <table border="0">
