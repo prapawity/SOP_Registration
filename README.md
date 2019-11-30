@@ -13,33 +13,36 @@ Project of `Service-oriented Programming`
 http://35.198.250.42:80
 ```
 # Teacher Service
-```
 http://35.198.250.42:80/teacher-service
 ```
-## Section Checker (เช็คชื่อ)
+ SectionCheck (CRUD)
+ POST /sectionCheck/create   
+ GET  /sectionCheck
+ GET  /sectionCheck/{id}
+ POST /sectionCheck/update/{id}
+ GET  /sectionCheck/delete/{id}
+ _________________________________________________
+ Score (CRUD)
+ POST /scores/create
+ GET  /scores
+ GET  /scores/{id}
+ POST /scores/update/{id}
+ GET  /scores/delete/{id}
+ _________________________________________________
+ Subject
+ GET  /subject/view/{id}
+ GET  /subject
+ __________________________________________________
+ Section
+ GET /sections
+ GET /section/{id}
+ __________________________________________________
+ Student
+ GET /student/view/{id}
+ GET /student
+ __________________________________________________
 ```
-/sectionCheck/create
-/sectionCheck
-/sectionCheck/{id}
-/sectionCheck/update/{id}
-/sectionCheck/delete/{id}
-```
-## Student  (ดูรายชื่อนักเรียน)
-```
-/student/view/{id}
-/student
-```
-## Section  (ดู Section)
-```
-/sections
-/section/{id}
-```
-## Subject  (ดู Subject)
-```
-/subject
-/subject/view/{id}
-```
-## Score (CRUD คะแนน)
+
 
 
 # Student Service
@@ -96,3 +99,11 @@ http://35.198.250.42:80/servicehongfah
     <td colspan="4"><img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-social.png"></td>
 </tr>
 </table>
+
+# Members : Group 7
+|  |ชื่อ|นามสกุล|GitHub Username|รหัสนักศึกษา|
+|:-:|--|------|---------------|---------|
+|![]()|กวีพล|ขุนศรี|[@Suerpmalonz](https://github.com/Supermalonz)|60070003|
+|![]()|ฐิติพัฒน์|อริยรัตนา|[@prapawity](https://github.com/thitipat021)|60070021|
+|![]()|นิติพล|สิริวัฒนวโรดม|[@wewarwo](https://github.com/wewarwo)|60070042|
+|![]()|ปภาวิทย์|พัทธสิริวิโชติ|[@prapawity](https://github.com/prapawity)|60070045|
