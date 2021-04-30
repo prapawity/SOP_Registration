@@ -74,9 +74,7 @@ public class DatabasediscoveryclientApplication {
 
     ////////////////////////////////////////////    End - Student    ////////////////////////////////////////////
 
-
-
-
+    
     ////////////////////////////////////////////    Score            ////////////////////////////////////////////
 
     @RequestMapping(value = "scores/add", method = RequestMethod.POST)
@@ -113,11 +111,7 @@ public class DatabasediscoveryclientApplication {
     @RequestMapping(value = "scores/delete/{id}", method = RequestMethod.GET)
     Boolean deleteScoresID(@PathVariable int id){ return scoresService.deleteScores(id); }
 
-
-
-
     ////////////////////////////////////////////    End - Score    ////////////////////////////////////////////
-
 
 
     ////////////////////////////////////////////    HongFah        ////////////////////////////////////////////
@@ -157,13 +151,9 @@ public class DatabasediscoveryclientApplication {
     @RequestMapping(value = "user/hongfah/delete/{id}", method = RequestMethod.GET)
     Boolean deleteHongfahID(@PathVariable String id){ return hongfahService.deleteHongfahByID(id); }
 
-
-
-
     ////////////////////////////////////////////    End - HongFah    ////////////////////////////////////////////
-
-
-
+    
+    
     ////////////////////////////////////////////    Teacher           ///////////////////////////////////////////
 
     @RequestMapping(value = "user/teacher/add", method = RequestMethod.POST)
@@ -199,8 +189,6 @@ public class DatabasediscoveryclientApplication {
     @RequestMapping(value = "user/teacher/delete/{id}", method = RequestMethod.GET)
     Boolean deleteTeacherID(@PathVariable String id){ return teacherService.deleteTeacherByID(id); }
 
-
-
     ////////////////////////////////////////////    End - Teacher    ////////////////////////////////////////////
 
 
@@ -212,26 +200,6 @@ public class DatabasediscoveryclientApplication {
         Demographic demographic1 = new Demographic();
         return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(demographic.getId()) : demographic1;
     }
-//    @RequestMapping(value = "demographic/update/{id}", method = RequestMethod.POST)
-//    Demographic updateDemo(@RequestBody Demographic demographic, @PathVariable String id){
-//        return demographicService.createDemographic(demographic) == true ? demographicService.getDemoID(id) : null;
-//    }
-//
-//    @RequestMapping(value = "demographic", method = RequestMethod.GET)
-//    DemographicList getAllDemo(){
-//        DemographicList demographicList = new DemographicList(demographicService.getAllDemographic());
-//        return demographicList; }
-//
-//    @RequestMapping(value = "demographic/{id}", method = RequestMethod.GET)
-//    Demographic getDemoID(@PathVariable String id){ return demographicService.getDemoID(id); }
-//
-//    @RequestMapping(value = "demographic/delete/{id}", method = RequestMethod.GET)
-//    Boolean deleteDemoID(@PathVariable String id){ return demographicService.deleteDemographic(id); }
-
-
-
-
-
 
 //    ////////////////////////////////////////////    End - Demographic    ////////////////////////////////////////////
 
@@ -256,18 +224,10 @@ Subject addSubject(@RequestBody Subject subject){
     @RequestMapping(value = "subject/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSubjectID(@PathVariable int id){ return subjectService.deleteSubject(id); }
 
-
-
-
-
 //    ////////////////////////////////////////////    End - Subject    ////////////////////////////////////////////
 
 
-
-
 //    ////////////////////////////////////////////       Section        ///////////////////////////////////////////
-
-
 
     @RequestMapping(value = "section/add", method = RequestMethod.POST)
     SectionArray addSection(@RequestBody SectionArray sections){
@@ -293,7 +253,6 @@ Subject addSubject(@RequestBody Subject subject){
     @RequestMapping(value = "section/update/{id}", method = RequestMethod.POST)
     Section updateSection(@RequestBody Section section,@PathVariable String id){ return sectionService.createSection(section) != false ? sectionService.getSectionByID(id) : null; }
 
-
     @RequestMapping(value = "section", method = RequestMethod.GET)
     SectionArray getSectionAll(){ return sectionService.getAllSection(); }
 
@@ -302,12 +261,6 @@ Subject addSubject(@RequestBody Subject subject){
 
     @RequestMapping(value = "section/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSectionID(@PathVariable String id){ return sectionService.deleteSectionByID(id); }
-
-
-
-
-
-
 
 //    ////////////////////////////////////////////    End - Section    ////////////////////////////////////////////
 
@@ -348,9 +301,6 @@ Subject addSubject(@RequestBody Subject subject){
 
     @RequestMapping(value = "sectionCheck/delete/{id}", method = RequestMethod.GET)
     Boolean deleteSectionCheckID(@PathVariable int id){ return sectionCheckService.deleteSectionCheck(id); }
-
-
-
 
     ////////////////////////////////////////////    End - SectionCheck    ////////////////////////////////////////////
 }
